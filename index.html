@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Mohamed Elgebaly | HVAC Engineer & Automation</title>
+    <title>Mohamed Gebaly | HVAC Engineer | n8n Automation</title>
 
     <meta name="description"
-          content="Mohamed Elgebaly - Mechanical & HVAC Engineer specializing in HVAC operations, maintenance, n8n automation, data analytics and AI-powered workflows.">
+        content="Mohamed Gebaly - Mechanical & HVAC Engineer focused on n8n workflow automation, data analytics, APIs and AI-powered engineering solutions.">
+
+    <meta name="author" content="Mohamed Gebaly">
 
     <style>
+
+        /* =========================================================
+           RESET & GLOBAL
+        ========================================================= */
+
         * {
             margin: 0;
             padding: 0;
@@ -18,21 +26,42 @@
         }
 
         :root {
-            --bg: #0b1120;
-            --bg-light: #111827;
-            --card: #151e2f;
+            --bg: #080d18;
+            --bg-secondary: #0d1424;
+            --card: #111a2b;
+            --card-hover: #152137;
+
             --primary: #38bdf8;
+            --primary-dark: #0ea5e9;
+
             --secondary: #22c55e;
+
             --text: #f8fafc;
-            --muted: #94a3b8;
-            --border: #263449;
+            --text-secondary: #cbd5e1;
+            --muted: #8fa1b8;
+
+            --border: #22304a;
+
+            --max-width: 1150px;
+        }
+
+        html {
+            scroll-padding-top: 80px;
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
+            font-family:
+                Inter,
+                ui-sans-serif,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
             background: var(--bg);
             color: var(--text);
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         a {
@@ -40,21 +69,55 @@
             text-decoration: none;
         }
 
-        /* ================= NAVBAR ================= */
+        img {
+            max-width: 100%;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: auto;
+            padding: 90px 25px;
+        }
+
+        .section-title {
+            font-size: clamp(30px, 4vw, 42px);
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            color: var(--muted);
+            max-width: 720px;
+            margin-bottom: 45px;
+        }
+
+        .highlight {
+            color: var(--primary);
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
 
         nav {
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(11, 17, 32, 0.92);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
+
+            background: rgba(8, 13, 24, 0.88);
+            backdrop-filter: blur(14px);
+
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
 
         .nav-container {
-            max-width: 1150px;
+            max-width: var(--max-width);
             margin: auto;
-            padding: 18px 25px;
+
+            padding: 17px 25px;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -62,7 +125,8 @@
 
         .logo {
             font-size: 20px;
-            font-weight: bold;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
         .logo span {
@@ -71,69 +135,75 @@
 
         .nav-links {
             display: flex;
-            gap: 25px;
+            gap: 27px;
             list-style: none;
         }
 
         .nav-links a {
             color: var(--muted);
             font-size: 14px;
-            transition: 0.3s;
+            transition: 0.25s ease;
         }
 
         .nav-links a:hover {
             color: var(--primary);
         }
 
-        /* ================= GENERAL ================= */
 
-        .container {
-            max-width: 1150px;
-            margin: auto;
-            padding: 90px 25px;
-        }
-
-        .section-title {
-            font-size: 36px;
-            margin-bottom: 15px;
-        }
-
-        .section-subtitle {
-            color: var(--muted);
-            max-width: 700px;
-            margin-bottom: 45px;
-        }
-
-        /* ================= HERO ================= */
+        /* =========================================================
+           HERO
+        ========================================================= */
 
         .hero {
-            min-height: 90vh;
+            min-height: calc(100vh - 65px);
+
             display: flex;
             align-items: center;
+
             background:
-                radial-gradient(circle at 80% 20%, rgba(56,189,248,0.12), transparent 35%),
-                radial-gradient(circle at 20% 80%, rgba(34,197,94,0.08), transparent 35%);
+                radial-gradient(
+                    circle at 80% 15%,
+                    rgba(56, 189, 248, 0.15),
+                    transparent 32%
+                ),
+
+                radial-gradient(
+                    circle at 10% 85%,
+                    rgba(34, 197, 94, 0.08),
+                    transparent 30%
+                );
         }
 
         .hero-content {
-            max-width: 850px;
+            max-width: 900px;
         }
 
-        .tag {
-            display: inline-block;
+        .hero-tag {
+            display: inline-flex;
+
             padding: 7px 14px;
+
             border: 1px solid var(--border);
-            border-radius: 30px;
+            border-radius: 999px;
+
             color: var(--primary);
-            background: rgba(56,189,248,0.06);
-            font-size: 14px;
+
+            background: rgba(56, 189, 248, 0.06);
+
+            font-size: 13px;
+            font-weight: 600;
+
             margin-bottom: 25px;
         }
 
         .hero h1 {
-            font-size: clamp(42px, 7vw, 76px);
-            line-height: 1.05;
-            margin-bottom: 20px;
+            font-size: clamp(48px, 8vw, 82px);
+
+            line-height: 1;
+
+            letter-spacing: -3px;
+
+            margin-bottom: 25px;
         }
 
         .hero h1 span {
@@ -141,32 +211,50 @@
         }
 
         .hero h2 {
-            font-size: clamp(20px, 3vw, 30px);
-            color: var(--muted);
-            font-weight: normal;
+            font-size: clamp(22px, 3vw, 32px);
+
+            color: var(--text-secondary);
+
+            font-weight: 500;
+
             margin-bottom: 25px;
         }
 
-        .hero p {
-            max-width: 700px;
+        .hero-description {
+            max-width: 760px;
+
             color: var(--muted);
+
             font-size: 18px;
+
             margin-bottom: 35px;
+        }
+
+        .hero-description strong {
+            color: var(--text-secondary);
         }
 
         .buttons {
             display: flex;
-            gap: 15px;
+            gap: 14px;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 13px 22px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 12px 21px;
+
             border-radius: 8px;
-            font-weight: bold;
+
+            font-weight: 700;
+            font-size: 14px;
+
             border: 1px solid var(--border);
-            transition: 0.3s;
-            cursor: pointer;
+
+            transition: all 0.25s ease;
         }
 
         .btn-primary {
@@ -177,7 +265,7 @@
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            opacity: 0.9;
+            background: #7dd3fc;
         }
 
         .btn-secondary {
@@ -185,72 +273,231 @@
         }
 
         .btn-secondary:hover {
+            transform: translateY(-2px);
             border-color: var(--primary);
             color: var(--primary);
         }
 
-        /* ================= ABOUT ================= */
+
+        /* =========================================================
+           STATS
+        ========================================================= */
+
+        .stats {
+            background: var(--bg-secondary);
+
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stats-grid {
+            max-width: var(--max-width);
+
+            margin: auto;
+
+            padding: 35px 25px;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+        .stat {
+            text-align: center;
+
+            padding: 15px;
+
+            border-right: 1px solid var(--border);
+        }
+
+        .stat:last-child {
+            border-right: none;
+        }
+
+        .stat-number {
+            display: block;
+
+            font-size: 32px;
+
+            font-weight: 800;
+
+            color: var(--primary);
+
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+
+        /* =========================================================
+           ABOUT
+        ========================================================= */
 
         .about {
-            background: var(--bg-light);
+            background: var(--bg);
         }
 
         .about-grid {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
+
+            grid-template-columns: 1.25fr 0.75fr;
+
             gap: 50px;
+
+            align-items: start;
         }
 
         .about-text p {
             color: var(--muted);
+
             margin-bottom: 18px;
+
+            font-size: 16px;
         }
 
         .about-card {
             background: var(--card);
+
             border: 1px solid var(--border);
-            border-radius: 14px;
+
+            border-radius: 15px;
+
             padding: 30px;
         }
 
         .about-card h3 {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
+
             color: var(--primary);
+
+            font-size: 18px;
         }
 
-        .about-card div {
-            padding: 10px 0;
+        .focus-item {
+            padding: 11px 0;
+
             border-bottom: 1px solid var(--border);
-            color: var(--muted);
+
+            color: var(--text-secondary);
+
+            font-size: 14px;
         }
 
-        .about-card div:last-child {
+        .focus-item:last-child {
             border-bottom: none;
         }
 
-        /* ================= EXPERTISE ================= */
+
+        /* =========================================================
+           ENGINEERING × AUTOMATION
+        ========================================================= */
+
+        .bridge {
+            background: var(--bg-secondary);
+        }
+
+        .bridge-box {
+            display: grid;
+
+            grid-template-columns: 1fr auto 1fr;
+
+            gap: 25px;
+
+            align-items: center;
+
+            padding: 40px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 18px;
+        }
+
+        .bridge-side {
+            text-align: center;
+        }
+
+        .bridge-icon {
+            font-size: 42px;
+
+            margin-bottom: 12px;
+        }
+
+        .bridge-side h3 {
+            margin-bottom: 8px;
+        }
+
+        .bridge-side p {
+            color: var(--muted);
+
+            font-size: 14px;
+        }
+
+        .bridge-arrow {
+            font-size: 32px;
+
+            color: var(--primary);
+        }
+
+        .bridge-result {
+            margin-top: 30px;
+
+            padding: 22px;
+
+            text-align: center;
+
+            background: rgba(56, 189, 248, 0.06);
+
+            border: 1px solid rgba(56, 189, 248, 0.18);
+
+            border-radius: 12px;
+        }
+
+        .bridge-result strong {
+            color: var(--primary);
+        }
+
+
+        /* =========================================================
+           EXPERTISE
+        ========================================================= */
 
         .expertise-grid {
             display: grid;
+
             grid-template-columns: repeat(3, 1fr);
+
             gap: 20px;
         }
 
         .expertise-card {
             background: var(--card);
+
             border: 1px solid var(--border);
-            border-radius: 14px;
+
+            border-radius: 15px;
+
             padding: 30px;
-            transition: 0.3s;
+
+            transition: 0.25s ease;
         }
 
         .expertise-card:hover {
             transform: translateY(-5px);
+
+            background: var(--card-hover);
+
             border-color: var(--primary);
         }
 
-        .icon {
-            font-size: 35px;
+        .expertise-icon {
+            font-size: 36px;
+
             margin-bottom: 15px;
         }
 
@@ -260,113 +507,319 @@
 
         .expertise-card p {
             color: var(--muted);
-            font-size: 15px;
+
+            font-size: 14px;
         }
 
-        /* ================= PROJECTS ================= */
+
+        /* =========================================================
+           N8N SECTION
+        ========================================================= */
+
+        .automation {
+            background: var(--bg-secondary);
+        }
+
+        .automation-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 25px;
+        }
+
+        .automation-card {
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 15px;
+
+            padding: 30px;
+        }
+
+        .automation-card h3 {
+            margin-bottom: 15px;
+
+            color: var(--primary);
+        }
+
+        .automation-card p {
+            color: var(--muted);
+
+            margin-bottom: 20px;
+
+            font-size: 14px;
+        }
+
+        .automation-list {
+            list-style: none;
+        }
+
+        .automation-list li {
+            padding: 9px 0;
+
+            border-bottom: 1px solid var(--border);
+
+            color: var(--text-secondary);
+
+            font-size: 14px;
+        }
+
+        .automation-list li:last-child {
+            border-bottom: none;
+        }
+
+
+        /* =========================================================
+           PROJECTS
+        ========================================================= */
 
         .projects {
-            background: var(--bg-light);
+            background: var(--bg);
         }
 
         .projects-grid {
             display: grid;
+
             grid-template-columns: repeat(2, 1fr);
+
             gap: 25px;
         }
 
         .project-card {
+            position: relative;
+
             background: var(--card);
+
             border: 1px solid var(--border);
-            border-radius: 14px;
+
+            border-radius: 15px;
+
             padding: 30px;
-            transition: 0.3s;
+
+            transition: 0.25s ease;
         }
 
         .project-card:hover {
             transform: translateY(-5px);
+
+            background: var(--card-hover);
+
             border-color: var(--primary);
         }
 
         .project-number {
             color: var(--primary);
-            font-size: 14px;
-            font-weight: bold;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
         }
 
         .project-card h3 {
+            font-size: 22px;
+
             margin: 10px 0;
-            font-size: 23px;
         }
 
         .project-card p {
             color: var(--muted);
+
+            font-size: 14px;
+
             margin-bottom: 20px;
+        }
+
+        .project-status {
+            display: inline-block;
+
+            padding: 4px 9px;
+
+            border-radius: 20px;
+
+            background: rgba(34, 197, 94, 0.08);
+
+            border: 1px solid rgba(34, 197, 94, 0.2);
+
+            color: var(--secondary);
+
+            font-size: 11px;
+
+            margin-bottom: 15px;
         }
 
         .tags {
             display: flex;
+
             flex-wrap: wrap;
-            gap: 8px;
+
+            gap: 7px;
         }
 
         .tech-tag {
-            background: rgba(56,189,248,0.08);
-            border: 1px solid var(--border);
             padding: 5px 10px;
+
             border-radius: 20px;
-            font-size: 12px;
+
+            background: rgba(56, 189, 248, 0.06);
+
+            border: 1px solid var(--border);
+
             color: var(--primary);
+
+            font-size: 11px;
         }
 
-        /* ================= SKILLS ================= */
+
+        /* =========================================================
+           SKILLS
+        ========================================================= */
+
+        .skills {
+            background: var(--bg-secondary);
+        }
 
         .skills-grid {
             display: grid;
+
             grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
+
+            gap: 14px;
         }
 
         .skill {
+            padding: 17px;
+
             background: var(--card);
+
             border: 1px solid var(--border);
-            padding: 18px;
+
             border-radius: 10px;
+
             text-align: center;
-            color: var(--muted);
+
+            color: var(--text-secondary);
+
+            font-size: 13px;
+
+            transition: 0.2s ease;
         }
 
-        /* ================= CONTACT ================= */
+        .skill:hover {
+            border-color: var(--primary);
+
+            color: var(--primary);
+        }
+
+
+        /* =========================================================
+           LEARNING
+        ========================================================= */
+
+        .learning-box {
+            padding: 30px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(56, 189, 248, 0.08),
+                    rgba(34, 197, 94, 0.04)
+                );
+
+            border: 1px solid var(--border);
+
+            border-radius: 15px;
+        }
+
+        .learning-box h3 {
+            margin-bottom: 12px;
+        }
+
+        .learning-box p {
+            color: var(--muted);
+
+            margin-bottom: 20px;
+        }
+
+        .learning-tags {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 9px;
+        }
+
+        .learning-tag {
+            padding: 7px 12px;
+
+            border-radius: 20px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            color: var(--text-secondary);
+
+            font-size: 12px;
+        }
+
+
+        /* =========================================================
+           CONTACT
+        ========================================================= */
 
         .contact {
-            background: var(--bg-light);
+            background: var(--bg);
+
             text-align: center;
         }
 
-        .contact p {
-            max-width: 650px;
-            margin: 0 auto 30px;
+        .contact-content {
+            max-width: 700px;
+
+            margin: auto;
+        }
+
+        .contact-content p {
             color: var(--muted);
+
+            margin-bottom: 30px;
         }
 
         .contact-links {
             display: flex;
+
             justify-content: center;
-            gap: 15px;
+
+            gap: 12px;
+
             flex-wrap: wrap;
         }
 
-        /* ================= FOOTER ================= */
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
 
         footer {
+            padding: 28px 20px;
+
             text-align: center;
-            padding: 30px 20px;
-            border-top: 1px solid var(--border);
+
             color: var(--muted);
-            font-size: 14px;
+
+            font-size: 13px;
+
+            border-top: 1px solid var(--border);
         }
 
-        /* ================= RESPONSIVE ================= */
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
 
         @media (max-width: 850px) {
 
@@ -374,7 +827,16 @@
                 display: none;
             }
 
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat {
+                border-right: none;
+            }
+
             .about-grid,
+            .automation-grid,
             .projects-grid {
                 grid-template-columns: 1fr;
             }
@@ -386,7 +848,17 @@
             .skills-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .bridge-box {
+                grid-template-columns: 1fr;
+            }
+
+            .bridge-arrow {
+                transform: rotate(90deg);
+                text-align: center;
+            }
         }
+
 
         @media (max-width: 500px) {
 
@@ -395,74 +867,841 @@
             }
 
             .hero h1 {
-                font-size: 45px;
+                font-size: 48px;
+
+                letter-spacing: -2px;
+            }
+
+            .hero h2 {
+                font-size: 21px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+
+                padding: 25px 15px;
+            }
+
+            .stat-number {
+                font-size: 25px;
             }
 
             .skills-grid {
                 grid-template-columns: 1fr;
             }
+
+            .bridge-box {
+                padding: 25px;
+            }
         }
+
     </style>
 </head>
 
+
 <body>
 
-    <!-- ================= NAVIGATION ================= -->
 
-    <nav>
-        <div class="nav-container">
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
 
-            <a href="#home" class="logo">
-                Mohamed<span>Elgebaly</span>
-            </a>
+<nav>
 
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#expertise">Expertise</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+    <div class="nav-container">
+
+        <a href="#home" class="logo">
+            Mohamed<span>Gebaly</span>
+        </a>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="#about">About</a>
+            </li>
+
+            <li>
+                <a href="#expertise">Expertise</a>
+            </li>
+
+            <li>
+                <a href="#automation">Automation</a>
+            </li>
+
+            <li>
+                <a href="#projects">Projects</a>
+            </li>
+
+            <li>
+                <a href="#skills">Skills</a>
+            </li>
+
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero" id="home">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <div class="hero-tag">
+                Mechanical Engineering × Automation
+            </div>
+
+            <h1>
+                Mohamed <span>Gebaly</span>
+            </h1>
+
+            <h2>
+                HVAC Engineer |
+                <span class="highlight">n8n Automation</span> |
+                Data Analytics
+            </h2>
+
+            <p class="hero-description">
+
+                Mechanical and HVAC Engineer combining
+                <strong>real-world engineering experience</strong>
+                with workflow automation, APIs, data analytics
+                and AI-powered solutions.
+
+            </p>
+
+            <div class="buttons">
+
+                <a href="#projects" class="btn btn-primary">
+                    View Projects
+                </a>
+
+                <a href="#contact" class="btn btn-secondary">
+                    Contact Me
+                </a>
+
+            </div>
 
         </div>
-    </nav>
+
+    </div>
+
+</section>
 
 
-    <!-- ================= HERO ================= -->
 
-    <section class="hero" id="home">
+<!-- =========================================================
+     PROFESSIONAL SNAPSHOT
+========================================================= -->
 
-        <div class="container">
+<section class="stats">
 
-            <div class="hero-content">
+    <div class="stats-grid">
 
-                <div class="tag">
-                    Mechanical Engineering × Automation
-                </div>
+        <div class="stat">
 
-                <h1>
-                    Mohamed <span>Elgebaly</span>
-                </h1>
+            <span class="stat-number">
+                177+
+            </span>
 
-                <h2>
-                    HVAC Engineer → Automation & Data Analytics
-                </h2>
+            <span class="stat-label">
+                HVAC Assets
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <span class="stat-number">
+                106
+            </span>
+
+            <span class="stat-label">
+                Facilities & Buildings
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <span class="stat-number">
+                7
+            </span>
+
+            <span class="stat-label">
+                Contractors Coordinated
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <span class="stat-number">
+                100+
+            </span>
+
+            <span class="stat-label">
+                Monthly Work Orders
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<section class="about" id="about">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            About Me
+        </h2>
+
+        <p class="section-subtitle">
+            Engineering experience meets automation and data.
+        </p>
+
+
+        <div class="about-grid">
+
+
+            <div class="about-text">
 
                 <p>
-                    Mechanical and HVAC Engineer combining real-world
-                    engineering experience with workflow automation,
-                    data analytics, APIs, n8n and AI-powered solutions.
+                    I am a Mechanical Engineer specialized in
+                    HVAC systems, maintenance, operations and
+                    MEP engineering.
                 </p>
 
-                <div class="buttons">
+                <p>
+                    My engineering experience has given me practical
+                    exposure to equipment maintenance, troubleshooting,
+                    procurement workflows, contractors and operational
+                    processes.
+                </p>
 
-                    <a href="#projects" class="btn btn-primary">
-                        View My Projects
-                    </a>
+                <p>
+                    I am now expanding this experience into
+                    <strong>workflow automation, data analytics,
+                    APIs, n8n and AI-powered solutions.</strong>
+                </p>
 
-                    <a href="#contact" class="btn btn-secondary">
-                        Contact Me
-                    </a>
+                <p>
+                    My goal is to build practical systems that connect
+                    engineering processes with automation and
+                    data-driven decision making.
+                </p>
+
+            </div>
+
+
+            <div class="about-card">
+
+                <h3>
+                    My Core Focus
+                </h3>
+
+                <div class="focus-item">
+                    🏭 HVAC Engineering
+                </div>
+
+                <div class="focus-item">
+                    🔧 Maintenance & Operations
+                </div>
+
+                <div class="focus-item">
+                    🤖 n8n Workflow Automation
+                </div>
+
+                <div class="focus-item">
+                    📊 Data Analytics
+                </div>
+
+                <div class="focus-item">
+                    🔗 API Integration
+                </div>
+
+                <div class="focus-item">
+                    🧠 AI Automation
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     ENGINEERING × AUTOMATION
+========================================================= -->
+
+<section class="bridge">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Engineering × Automation
+        </h2>
+
+        <p class="section-subtitle">
+            My approach is to combine domain knowledge with
+            automation technology to solve practical operational problems.
+        </p>
+
+
+        <div class="bridge-box">
+
+
+            <div class="bridge-side">
+
+                <div class="bridge-icon">
+                    🏭
+                </div>
+
+                <h3>
+                    Engineering
+                </h3>
+
+                <p>
+                    HVAC systems, maintenance,
+                    operations, troubleshooting,
+                    procurement and engineering processes.
+                </p>
+
+            </div>
+
+
+            <div class="bridge-arrow">
+                →
+            </div>
+
+
+            <div class="bridge-side">
+
+                <div class="bridge-icon">
+                    🤖
+                </div>
+
+                <h3>
+                    Automation
+                </h3>
+
+                <p>
+                    n8n, APIs, webhooks, databases,
+                    data transformation and AI-powered workflows.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="bridge-result">
+
+            <strong>
+                Engineering Automation Solutions
+            </strong>
+
+            <br>
+
+            Turning repetitive operational processes
+            into structured, automated workflows.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     EXPERTISE
+========================================================= -->
+
+<section id="expertise">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Engineering Expertise
+        </h2>
+
+        <p class="section-subtitle">
+            My technical foundation comes from practical HVAC,
+            maintenance and MEP engineering work.
+        </p>
+
+
+        <div class="expertise-grid">
+
+
+            <div class="expertise-card">
+
+                <div class="expertise-icon">
+                    ❄️
+                </div>
+
+                <h3>
+                    HVAC Engineering
+                </h3>
+
+                <p>
+                    HVAC systems, chillers, AHUs, FCUs,
+                    package units, split systems and
+                    central air-conditioning systems.
+                </p>
+
+            </div>
+
+
+            <div class="expertise-card">
+
+                <div class="expertise-icon">
+                    🔧
+                </div>
+
+                <h3>
+                    Maintenance
+                </h3>
+
+                <p>
+                    Preventive and corrective maintenance,
+                    troubleshooting, work orders,
+                    equipment performance and operational support.
+                </p>
+
+            </div>
+
+
+            <div class="expertise-card">
+
+                <div class="expertise-icon">
+                    📦
+                </div>
+
+                <h3>
+                    Procurement
+                </h3>
+
+                <p>
+                    Technical specifications, quotation review,
+                    spare parts, vendor coordination and
+                    maintenance-related procurement workflows.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     N8N AUTOMATION
+========================================================= -->
+
+<section class="automation" id="automation">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            n8n Automation
+        </h2>
+
+        <p class="section-subtitle">
+            Building practical workflows that connect systems,
+            data and people.
+        </p>
+
+
+        <div class="automation-grid">
+
+
+            <div class="automation-card">
+
+                <h3>
+                    ⚙️ Workflow Automation
+                </h3>
+
+                <p>
+                    Designing workflows that automate repetitive
+                    operational processes and reduce manual steps.
+                </p>
+
+                <ul class="automation-list">
+
+                    <li>
+                        ✓ Trigger-based workflows
+                    </li>
+
+                    <li>
+                        ✓ Conditional logic
+                    </li>
+
+                    <li>
+                        ✓ Data transformation
+                    </li>
+
+                    <li>
+                        ✓ Error handling
+                    </li>
+
+                    <li>
+                        ✓ Scheduled workflows
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="automation-card">
+
+                <h3>
+                    🔗 APIs & Integrations
+                </h3>
+
+                <p>
+                    Connecting external services and data sources
+                    to create automated business workflows.
+                </p>
+
+                <ul class="automation-list">
+
+                    <li>
+                        ✓ REST APIs
+                    </li>
+
+                    <li>
+                        ✓ Webhooks
+                    </li>
+
+                    <li>
+                        ✓ JSON
+                    </li>
+
+                    <li>
+                        ✓ Google Sheets
+                    </li>
+
+                    <li>
+                        ✓ Database integrations
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     PROJECTS
+========================================================= -->
+
+<section class="projects" id="projects">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Featured Projects
+        </h2>
+
+        <p class="section-subtitle">
+            Practical projects connecting HVAC, automation,
+            data and AI.
+        </p>
+
+
+        <div class="projects-grid">
+
+
+            <!-- PROJECT 01 -->
+
+            <div class="project-card">
+
+                <span class="project-status">
+                    Building
+                </span>
+
+                <div class="project-number">
+                    PROJECT 01
+                </div>
+
+                <h3>
+                    HVAC Maintenance Automation
+                </h3>
+
+                <p>
+                    Automated workflow for collecting HVAC
+                    maintenance reports, validating data,
+                    classifying issues and routing notifications.
+                </p>
+
+                <div class="tags">
+
+                    <span class="tech-tag">
+                        n8n
+                    </span>
+
+                    <span class="tech-tag">
+                        HVAC
+                    </span>
+
+                    <span class="tech-tag">
+                        Webhooks
+                    </span>
+
+                    <span class="tech-tag">
+                        Automation
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PROJECT 02 -->
+
+            <div class="project-card">
+
+                <span class="project-status">
+                    Planned
+                </span>
+
+                <div class="project-number">
+                    PROJECT 02
+                </div>
+
+                <h3>
+                    Preventive Maintenance Automation
+                </h3>
+
+                <p>
+                    Workflow for monitoring maintenance schedules
+                    and generating automated reminders and
+                    maintenance tasks.
+                </p>
+
+                <div class="tags">
+
+                    <span class="tech-tag">
+                        n8n
+                    </span>
+
+                    <span class="tech-tag">
+                        Maintenance
+                    </span>
+
+                    <span class="tech-tag">
+                        Scheduling
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PROJECT 03 -->
+
+            <div class="project-card">
+
+                <span class="project-status">
+                    Planned
+                </span>
+
+                <div class="project-number">
+                    PROJECT 03
+                </div>
+
+                <h3>
+                    HVAC Failure Analysis
+                </h3>
+
+                <p>
+                    Analysis of equipment failures, downtime,
+                    MTBF, MTTR and maintenance performance using
+                    structured maintenance data.
+                </p>
+
+                <div class="tags">
+
+                    <span class="tech-tag">
+                        Excel
+                    </span>
+
+                    <span class="tech-tag">
+                        SQL
+                    </span>
+
+                    <span class="tech-tag">
+                        Power BI
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PROJECT 04 -->
+
+            <div class="project-card">
+
+                <span class="project-status">
+                    Planned
+                </span>
+
+                <div class="project-number">
+                    PROJECT 04
+                </div>
+
+                <h3>
+                    Spare Parts Automation
+                </h3>
+
+                <p>
+                    Automated workflow for spare parts requests,
+                    stock checks, approvals and procurement actions.
+                </p>
+
+                <div class="tags">
+
+                    <span class="tech-tag">
+                        n8n
+                    </span>
+
+                    <span class="tech-tag">
+                        Inventory
+                    </span>
+
+                    <span class="tech-tag">
+                        APIs
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PROJECT 05 -->
+
+            <div class="project-card">
+
+                <span class="project-status">
+                    In Development
+                </span>
+
+                <div class="project-number">
+                    PROJECT 05
+                </div>
+
+                <h3>
+                    Invoice Reconciliation
+                </h3>
+
+                <p>
+                    Automated workflow for matching purchase orders,
+                    invoices and receiving records while detecting
+                    missing or inconsistent invoices.
+                </p>
+
+                <div class="tags">
+
+                    <span class="tech-tag">
+                        n8n
+                    </span>
+
+                    <span class="tech-tag">
+                        SQL
+                    </span>
+
+                    <span class="tech-tag">
+                        Data
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PROJECT 06 -->
+
+            <div class="project-card">
+
+                <span class="project-status">
+                    Future Project
+                </span>
+
+                <div class="project-number">
+                    PROJECT 06
+                </div>
+
+                <h3>
+                    AI HVAC Assistant
+                </h3>
+
+                <p>
+                    AI-assisted workflow for organizing HVAC fault
+                    information and providing structured troubleshooting
+                    guidance for engineering decision support.
+                </p>
+
+                <div class="tags">
+
+                    <span class="tech-tag">
+                        AI
+                    </span>
+
+                    <span class="tech-tag">
+                        n8n
+                    </span>
+
+                    <span class="tech-tag">
+                        HVAC
+                    </span>
 
                 </div>
 
@@ -470,364 +1709,162 @@
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- ================= ABOUT ================= -->
 
-    <section class="about" id="about">
+<!-- =========================================================
+     SKILLS
+========================================================= -->
 
-        <div class="container">
+<section class="skills" id="skills">
 
-            <h2 class="section-title">
-                About Me
-            </h2>
+    <div class="container">
 
-            <p class="section-subtitle">
-                Engineering experience meets automation and data.
+        <h2 class="section-title">
+            Skills & Technologies
+        </h2>
+
+        <p class="section-subtitle">
+            My current technical foundation and areas of development.
+        </p>
+
+
+        <div class="skills-grid">
+
+            <div class="skill">
+                HVAC Engineering
+            </div>
+
+            <div class="skill">
+                HVAC Maintenance
+            </div>
+
+            <div class="skill">
+                MEP Engineering
+            </div>
+
+            <div class="skill">
+                n8n
+            </div>
+
+            <div class="skill">
+                Workflow Automation
+            </div>
+
+            <div class="skill">
+                REST APIs
+            </div>
+
+            <div class="skill">
+                Webhooks
+            </div>
+
+            <div class="skill">
+                JSON
+            </div>
+
+            <div class="skill">
+                Microsoft Excel
+            </div>
+
+            <div class="skill">
+                SQL
+            </div>
+
+            <div class="skill">
+                Power BI
+            </div>
+
+            <div class="skill">
+                Data Analytics
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CURRENTLY LEARNING
+========================================================= -->
+
+<section>
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Currently Learning
+        </h2>
+
+        <p class="section-subtitle">
+            Continuously expanding my automation and data capabilities.
+        </p>
+
+
+        <div class="learning-box">
+
+            <h3>
+                Building the next layer of my technical stack
+            </h3>
+
+            <p>
+                My current learning path focuses on becoming stronger
+                in automation, data and AI while keeping engineering
+                as my domain foundation.
             </p>
 
-            <div class="about-grid">
 
-                <div class="about-text">
+            <div class="learning-tags">
 
-                    <p>
-                        I am a Mechanical Engineer specialized in
-                        HVAC systems, maintenance, operations and MEP
-                        engineering.
-                    </p>
+                <span class="learning-tag">
+                    Advanced n8n
+                </span>
 
-                    <p>
-                        I am currently expanding my technical skills
-                        into workflow automation, data analytics,
-                        APIs and AI-powered solutions.
-                    </p>
+                <span class="learning-tag">
+                    SQL
+                </span>
 
-                    <p>
-                        My main focus is building practical systems
-                        that connect engineering processes with
-                        automation and data-driven decision making.
-                    </p>
+                <span class="learning-tag">
+                    Power BI
+                </span>
 
-                </div>
+                <span class="learning-tag">
+                    Python
+                </span>
 
-                <div class="about-card">
+                <span class="learning-tag">
+                    APIs
+                </span>
 
-                    <h3>Core Focus</h3>
-
-                    <div>🏭 HVAC Engineering</div>
-                    <div>🔧 Maintenance & Operations</div>
-                    <div>🤖 n8n Automation</div>
-                    <div>📊 Data Analytics</div>
-                    <div>🔗 API Integration</div>
-                    <div>🧠 AI Automation</div>
-
-                </div>
+                <span class="learning-tag">
+                    AI Automation
+                </span>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
 
+</section>
 
-    <!-- ================= EXPERTISE ================= -->
 
-    <section id="expertise">
 
-        <div class="container">
+<!-- =========================================================
+     CONTACT
+========================================================= -->
 
-            <h2 class="section-title">
-                What I Work With
-            </h2>
+<section class="contact" id="contact">
 
-            <p class="section-subtitle">
-                Combining engineering knowledge with modern
-                automation technologies.
-            </p>
+    <div class="container">
 
-            <div class="expertise-grid">
-
-                <div class="expertise-card">
-
-                    <div class="icon">❄️</div>
-
-                    <h3>HVAC Engineering</h3>
-
-                    <p>
-                        HVAC systems, maintenance, operations,
-                        troubleshooting and MEP engineering.
-                    </p>
-
-                </div>
-
-
-                <div class="expertise-card">
-
-                    <div class="icon">⚙️</div>
-
-                    <h3>Workflow Automation</h3>
-
-                    <p>
-                        Building automated workflows using n8n,
-                        webhooks, APIs and external services.
-                    </p>
-
-                </div>
-
-
-                <div class="expertise-card">
-
-                    <div class="icon">📊</div>
-
-                    <h3>Data & Analytics</h3>
-
-                    <p>
-                        Transforming operational data into useful
-                        insights, dashboards and decision-support tools.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= PROJECTS ================= -->
-
-    <section class="projects" id="projects">
-
-        <div class="container">
-
-            <h2 class="section-title">
-                Featured Projects
-            </h2>
-
-            <p class="section-subtitle">
-                Practical projects connecting HVAC, automation,
-                data and AI.
-            </p>
-
-
-            <div class="projects-grid">
-
-                <!-- PROJECT 1 -->
-
-                <div class="project-card">
-
-                    <div class="project-number">
-                        PROJECT 01
-                    </div>
-
-                    <h3>
-                        HVAC Maintenance Automation
-                    </h3>
-
-                    <p>
-                        Automated workflow for collecting HVAC
-                        maintenance reports, validating data,
-                        classifying issues and triggering notifications.
-                    </p>
-
-                    <div class="tags">
-                        <span class="tech-tag">n8n</span>
-                        <span class="tech-tag">HVAC</span>
-                        <span class="tech-tag">Automation</span>
-                        <span class="tech-tag">Webhooks</span>
-                    </div>
-
-                </div>
-
-
-                <!-- PROJECT 2 -->
-
-                <div class="project-card">
-
-                    <div class="project-number">
-                        PROJECT 02
-                    </div>
-
-                    <h3>
-                        Preventive Maintenance Automation
-                    </h3>
-
-                    <p>
-                        Workflow concept for monitoring maintenance
-                        schedules and automatically generating
-                        maintenance notifications.
-                    </p>
-
-                    <div class="tags">
-                        <span class="tech-tag">n8n</span>
-                        <span class="tech-tag">Maintenance</span>
-                        <span class="tech-tag">Automation</span>
-                    </div>
-
-                </div>
-
-
-                <!-- PROJECT 3 -->
-
-                <div class="project-card">
-
-                    <div class="project-number">
-                        PROJECT 03
-                    </div>
-
-                    <h3>
-                        HVAC Failure Analysis
-                    </h3>
-
-                    <p>
-                        Data analysis project focused on equipment
-                        failures, downtime, MTBF, MTTR and maintenance
-                        performance.
-                    </p>
-
-                    <div class="tags">
-                        <span class="tech-tag">Excel</span>
-                        <span class="tech-tag">SQL</span>
-                        <span class="tech-tag">Power BI</span>
-                        <span class="tech-tag">Analytics</span>
-                    </div>
-
-                </div>
-
-
-                <!-- PROJECT 4 -->
-
-                <div class="project-card">
-
-                    <div class="project-number">
-                        PROJECT 04
-                    </div>
-
-                    <h3>
-                        Spare Parts Automation
-                    </h3>
-
-                    <p>
-                        Automated workflow for spare parts requests,
-                        inventory checks, approvals and procurement
-                        workflows.
-                    </p>
-
-                    <div class="tags">
-                        <span class="tech-tag">n8n</span>
-                        <span class="tech-tag">APIs</span>
-                        <span class="tech-tag">Inventory</span>
-                        <span class="tech-tag">Automation</span>
-                    </div>
-
-                </div>
-
-
-                <!-- PROJECT 5 -->
-
-                <div class="project-card">
-
-                    <div class="project-number">
-                        PROJECT 05
-                    </div>
-
-                    <h3>
-                        Invoice Reconciliation
-                    </h3>
-
-                    <p>
-                        Automated workflow for matching purchase
-                        orders, invoices and receiving records while
-                        detecting missing or inconsistent invoices.
-                    </p>
-
-                    <div class="tags">
-                        <span class="tech-tag">n8n</span>
-                        <span class="tech-tag">SQL</span>
-                        <span class="tech-tag">Automation</span>
-                        <span class="tech-tag">Data</span>
-                    </div>
-
-                </div>
-
-
-                <!-- PROJECT 6 -->
-
-                <div class="project-card">
-
-                    <div class="project-number">
-                        PROJECT 06
-                    </div>
-
-                    <h3>
-                        AI HVAC Assistant
-                    </h3>
-
-                    <p>
-                        AI-assisted workflow designed to organize
-                        HVAC fault information and provide structured
-                        troubleshooting guidance.
-                    </p>
-
-                    <div class="tags">
-                        <span class="tech-tag">AI</span>
-                        <span class="tech-tag">n8n</span>
-                        <span class="tech-tag">HVAC</span>
-                        <span class="tech-tag">Automation</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= SKILLS ================= -->
-
-    <section id="skills">
-
-        <div class="container">
-
-            <h2 class="section-title">
-                Skills & Technologies
-            </h2>
-
-            <p class="section-subtitle">
-                Technologies and disciplines I use or am currently developing.
-            </p>
-
-            <div class="skills-grid">
-
-                <div class="skill">HVAC Engineering</div>
-                <div class="skill">Maintenance</div>
-                <div class="skill">MEP Engineering</div>
-                <div class="skill">n8n</div>
-                <div class="skill">Workflow Automation</div>
-                <div class="skill">REST APIs</div>
-                <div class="skill">Webhooks</div>
-                <div class="skill">Microsoft Excel</div>
-                <div class="skill">SQL</div>
-                <div class="skill">Power BI</div>
-                <div class="skill">Data Analytics</div>
-                <div class="skill">AI Automation</div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= CONTACT ================= -->
-
-    <section class="contact" id="contact">
-
-        <div class="container">
+        <div class="contact-content">
 
             <h2 class="section-title">
                 Let's Connect
@@ -839,44 +1876,65 @@
                 Feel free to connect with me.
             </p>
 
-            <div class="contact-links">
 
-                <!-- Replace these links with your real profiles -->
+            <div class="contact-links">
 
                 <a
                     href="https://github.com/Mohamed-Gebaly"
-                    class="btn btn-secondary"
-                    target="_blank">
+                    target="_blank"
+                    class="btn btn-secondary">
+
                     GitHub
+
                 </a>
+
+
+                <!--
+                Replace # with your LinkedIn profile URL
+                -->
 
                 <a
                     href="#"
                     class="btn btn-secondary">
+
                     LinkedIn
+
                 </a>
+
+
+                <!--
+                Replace the email with your real email
+                -->
 
                 <a
                     href="mailto:your-email@example.com"
                     class="btn btn-primary">
+
                     Email Me
+
                 </a>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- ================= FOOTER ================= -->
 
-    <footer>
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
-        © 2026 Mohamed Elgebaly ·
-        HVAC Engineering × Automation × Data
+<footer>
 
-    </footer>
+    © 2026 Mohamed Gebaly ·
+    HVAC Engineering × Automation × Data
+
+</footer>
+
 
 </body>
 </html>
