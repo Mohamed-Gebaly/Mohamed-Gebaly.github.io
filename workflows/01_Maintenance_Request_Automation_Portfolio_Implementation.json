@@ -1,0 +1,153 @@
+{
+  "name": "Maintenance Request Automation - Portfolio Implementation",
+  "nodes": [
+    {
+      "id": "1",
+      "name": "New Maintenance Request",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "2",
+      "name": "Prepare Request Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "parameters": {
+        "jsCode": "return [{json:{requestId:'MR-001',equipment:'AHU-11',location:'LER-11',problem:'Cooling performance is low',severity:'High',status:''}}];"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Check Processing Status",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        460,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json.status}}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "4",
+      "name": "Check Severity",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        700,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json.severity}}",
+              "operation": "equals",
+              "value2": "High"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "5",
+      "name": "Process Urgent Request",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        940,
+        -100
+      ],
+      "parameters": {
+        "jsCode": "return [{json:{...$json,status:'Urgent',route:'Corrective Maintenance Team',notification:'Urgent maintenance notification prepared'}}];"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Process Normal Request",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        940,
+        100
+      ],
+      "parameters": {
+        "jsCode": "return [{json:{...$json,status:'Normal',route:'Preventive Maintenance Team',notification:'Standard maintenance notification prepared'}}];"
+      }
+    }
+  ],
+  "connections": {
+    "New Maintenance Request": {
+      "main": [
+        [
+          {
+            "node": "Prepare Request Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Request Data": {
+      "main": [
+        [
+          {
+            "node": "Check Processing Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Processing Status": {
+      "main": [
+        [
+          {
+            "node": "Check Severity",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Severity": {
+      "main": [
+        [
+          {
+            "node": "Process Urgent Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Process Normal Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
