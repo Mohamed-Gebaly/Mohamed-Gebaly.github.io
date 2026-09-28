@@ -1,0 +1,146 @@
+{
+  "name": "AI Request Classification - Portfolio Demo",
+  "nodes": [
+    {
+      "id": "1",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "2",
+      "name": "Prepare Request",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "parameters": {
+        "jsCode": "return [{json:{request:'AHU in LER-11 is not cooling properly',equipment:'AHU-11',location:'LER-11',severity:'High'}}];"
+      }
+    },
+    {
+      "id": "3",
+      "name": "AI Classification Demo",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        460,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const r=$json; const text=(r.request||'').toLowerCase(); const priority=(r.severity||'').toLowerCase()==='high'||text.includes('not cooling')?'High':'Normal'; return [{json:{...r,category:'Maintenance',priority,ai_step:'Portfolio simulation — replace with an LLM node for production'}}];"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Check Priority",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        700,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json.priority}}",
+              "operation": "equals",
+              "value2": "High"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "5",
+      "name": "Route High Priority",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        940,
+        -100
+      ],
+      "parameters": {
+        "jsCode": "return [{json:{...$json,route:'Urgent Maintenance Team',action:'Escalate'}}];"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Route Standard Request",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        940,
+        100
+      ],
+      "parameters": {
+        "jsCode": "return [{json:{...$json,route:'Standard Maintenance Queue',action:'Process'}}];"
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Prepare Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Request": {
+      "main": [
+        [
+          {
+            "node": "AI Classification Demo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Classification Demo": {
+      "main": [
+        [
+          {
+            "node": "Check Priority",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Priority": {
+      "main": [
+        [
+          {
+            "node": "Route High Priority",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Route Standard Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
