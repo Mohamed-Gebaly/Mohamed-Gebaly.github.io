@@ -1,0 +1,174 @@
+{
+  "name": "API & Google Sheets Integration - Portfolio Demo",
+  "nodes": [
+    {
+      "id": "1",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "2",
+      "name": "Source Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "parameters": {
+        "jsCode": "return [{json:{item:'R134a Cylinder',currentStock:3,minimumStock:5,quantityToOrder:10}}];"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Prepare API Payload",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        460,
+        0
+      ],
+      "parameters": {
+        "jsCode": "return [{json:{payload:{item:$json.item,currentStock:$json.currentStock,requestedQuantity:$json.quantityToOrder},minimumStock:$json.minimumStock}}];"
+      }
+    },
+    {
+      "id": "4",
+      "name": "HTTP Demo API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://httpbin.org/anything",
+        "sendBody": true,
+        "contentType": "json",
+        "jsonBody": "={{JSON.stringify($json.payload)}}"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Check Reorder Requirement",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        940,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{$json.json?.data?.currentStock || 0}}",
+              "operation": "smaller",
+              "value2": 5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "6",
+      "name": "Prepare Sheets Update",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1180,
+        -100
+      ],
+      "parameters": {
+        "jsCode": "return [{json:{status:'Reorder Required',nextStep:'Update Google Sheets',note:'Portfolio demo — connect real Sheets credentials in production'}}];"
+      }
+    },
+    {
+      "id": "7",
+      "name": "No Reorder",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1180,
+        100
+      ],
+      "parameters": {
+        "jsCode": "return [{json:{status:'Stock Level OK',nextStep:'No Purchase Action'}}];"
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Source Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Source Data": {
+      "main": [
+        [
+          {
+            "node": "Prepare API Payload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare API Payload": {
+      "main": [
+        [
+          {
+            "node": "HTTP Demo API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Demo API": {
+      "main": [
+        [
+          {
+            "node": "Check Reorder Requirement",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Reorder Requirement": {
+      "main": [
+        [
+          {
+            "node": "Prepare Sheets Update",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Reorder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
