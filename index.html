@@ -1,838 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Mohamed Gebaly — n8n Automation Engineer with an HVAC and operations engineering background. Building practical workflow automation, API integrations and AI-assisted business workflows." />
-  <meta name="author" content="Mohamed Gebaly" />
-  <meta name="theme-color" content="#07111f" />
-  <title>Mohamed Gebaly | n8n Automation & Engineering</title>
-
-  <style>
-    :root{
-      --bg:#07111f;
-      --bg2:#0b1728;
-      --card:#0f1d31;
-      --card2:#12243b;
-      --line:#1e3550;
-      --text:#f4f8fc;
-      --muted:#9db0c5;
-      --primary:#38bdf8;
-      --primary2:#0ea5e9;
-      --green:#22c55e;
-      --max:1180px;
-      --radius:20px;
-      --shadow:0 18px 60px rgba(0,0,0,.25);
-    }
-
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth;scroll-padding-top:82px}
-    body{
-      font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
-      background:
-        radial-gradient(circle at 80% 0%,rgba(56,189,248,.10),transparent 32rem),
-        radial-gradient(circle at 0% 35%,rgba(14,165,233,.06),transparent 28rem),
-        var(--bg);
-      color:var(--text);
-      line-height:1.7;
-    }
-    a{color:inherit;text-decoration:none}
-    .container{width:min(var(--max),calc(100% - 40px));margin:auto}
-    .muted{color:var(--muted)}
-    .accent{color:var(--primary)}
-
-    /* NAV */
-    nav{
-      position:sticky;top:0;z-index:50;
-      background:rgba(7,17,31,.82);
-      backdrop-filter:blur(16px);
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
-    .nav-inner{height:74px;display:flex;align-items:center;justify-content:space-between}
-    .brand{font-weight:800;letter-spacing:.2px}
-    .brand span{color:var(--primary)}
-    .nav-links{display:flex;gap:26px;align-items:center}
-    .nav-links a{font-size:.92rem;color:var(--muted);transition:.2s}
-    .nav-links a:hover{color:var(--text)}
-    .nav-cta{
-      padding:9px 15px;border:1px solid rgba(56,189,248,.35);
-      border-radius:999px;color:var(--primary)!important
-    }
-    .menu{display:none;background:none;border:0;color:var(--text);font-size:1.5rem}
-
-    /* HERO */
-    .hero{padding:92px 0 70px}
-    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:58px;align-items:center}
-    .eyebrow{
-      display:inline-flex;align-items:center;gap:9px;
-      padding:7px 12px;border:1px solid rgba(56,189,248,.2);
-      border-radius:999px;background:rgba(56,189,248,.06);
-      color:#b9eaff;font-size:.82rem;font-weight:700;margin-bottom:22px
-    }
-    .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px rgba(34,197,94,.65)}
-    h1{margin:0;line-height:1;max-width:850px;letter-spacing:-3px}
-    .hero-name{display:block;font-size:clamp(3.6rem,7vw,6.3rem);font-weight:850;line-height:.95;letter-spacing:-.055em;background:linear-gradient(135deg,#f8fbff 10%,#b9eaff 75%);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .hero-title{display:block;margin-top:16px;font-size:clamp(1.65rem,3vw,2.65rem);font-weight:780;line-height:1.05;letter-spacing:-1.5px;color:var(--primary)}
-    .hero-subtitle{display:block;margin-top:10px;font-size:clamp(1.05rem,1.7vw,1.25rem);font-weight:650;color:#cbd9e8;letter-spacing:-.2px}
-    .hero h1 .line{display:block}
-    .hero-copy{font-size:1.08rem;color:var(--muted);max-width:720px;margin:24px 0 30px;line-height:1.75}
-    .actions{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      padding:12px 18px;border-radius:12px;font-weight:750;
-      border:1px solid var(--line);transition:.2s
-    }
-    .btn-primary{background:var(--primary);color:#03121d;border-color:var(--primary)}
-    .btn-primary:hover{background:#7dd3fc;transform:translateY(-1px)}
-    .btn-secondary{background:rgba(255,255,255,.025)}
-    .btn-secondary:hover{border-color:#365572;background:rgba(255,255,255,.05)}
-
-    .hero-side{display:grid;gap:18px;align-self:stretch}
-    .profile-card{position:relative;min-height:380px;border:1px solid rgba(56,189,248,.2);border-radius:30px;overflow:hidden;background:radial-gradient(circle at 72% 18%,rgba(56,189,248,.15),rgba(10,24,41,.94) 52%);box-shadow:var(--shadow);display:flex;align-items:flex-end;justify-content:center}
-    .profile-card:before{content:"";position:absolute;width:310px;height:310px;border-radius:50%;background:rgba(56,189,248,.12);filter:blur(30px);right:-70px;top:-70px}
-    .profile-card:after{content:"";position:absolute;inset:auto 8% 0;height:42%;background:linear-gradient(180deg,transparent,rgba(4,12,22,.72));pointer-events:none}
-    .profile-photo{position:relative;z-index:2;width:min(94%,560px);height:auto;max-height:430px;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 22px 24px rgba(0,0,0,.35));transform:translateY(6px)}
-    .profile-label{position:absolute;z-index:3;left:20px;bottom:18px;padding:9px 12px;border:1px solid rgba(255,255,255,.12);background:rgba(5,15,27,.72);backdrop-filter:blur(10px);border-radius:12px;font-size:.78rem;color:#dbeafe;font-weight:700}
-    .hero-panel{
-      position:relative;border:1px solid var(--line);background:linear-gradient(145deg,rgba(18,36,59,.92),rgba(10,24,41,.92));
-      border-radius:22px;padding:20px;box-shadow:var(--shadow);overflow:hidden}
-    }
-    .hero-panel:before{
-      content:"";position:absolute;width:180px;height:180px;border-radius:50%;
-      background:rgba(56,189,248,.12);filter:blur(20px);right:-80px;top:-80px
-    }
-    .panel-title{font-size:.8rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--primary);font-weight:800;margin-bottom:18px}
-    .flow{display:grid;gap:10px}
-    .flow-item{
-      padding:13px 14px;border:1px solid rgba(255,255,255,.07);
-      background:rgba(255,255,255,.025);border-radius:13px
-    }
-    .flow-item strong{display:block;font-size:.92rem}
-    .flow-item span{font-size:.78rem;color:var(--muted)}
-    .arrow{color:#50708e;text-align:center;font-size:.8rem}
-
-    /* METRICS */
-    .metrics{padding:15px 0 80px}
-    .metric-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.018)}
-    .metric{padding:23px;border-right:1px solid var(--line)}
-    .metric:last-child{border-right:0}
-    .metric b{font-size:1.8rem;display:block;color:var(--text)}
-    .metric span{font-size:.84rem;color:var(--muted)}
-
-    /* SECTIONS */
-    section{padding:90px 0}
-    .section-kicker{font-size:.76rem;color:var(--primary);font-weight:850;text-transform:uppercase;letter-spacing:1.7px;margin-bottom:9px}
-    .section-title{font-size:clamp(2rem,4vw,3.1rem);letter-spacing:-1.6px;line-height:1.1;margin-bottom:12px}
-    .section-intro{color:var(--muted);max-width:760px;margin-bottom:38px}
-
-    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-    .card{
-      background:linear-gradient(145deg,rgba(15,29,49,.95),rgba(10,23,40,.95));
-      border:1px solid var(--line);border-radius:var(--radius);padding:28px
-    }
-    .card h3{margin-bottom:10px}
-    .card p{color:var(--muted)}
-    .focus-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
-    .focus{
-      border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:12px;
-      font-size:.9rem;background:rgba(255,255,255,.02)
-    }
-
-    /* SERVICES */
-    .service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
-    .service{padding:23px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.018)}
-    .service .icon{font-size:1.5rem;margin-bottom:13px}
-    .service h3{font-size:1rem;margin-bottom:7px}
-    .service p{font-size:.86rem;color:var(--muted)}
-
-    /* PROJECTS */
-    .project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    .project{
-      border:1px solid var(--line);border-radius:22px;padding:26px;
-      background:linear-gradient(145deg,rgba(15,29,49,.96),rgba(8,19,34,.96));
-      position:relative;overflow:hidden
-    }
-    .project.featured{border-color:rgba(56,189,248,.34)}
-    .project-top{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;margin-bottom:22px}
-    .project-num{font-size:.75rem;color:var(--primary);font-weight:850;letter-spacing:1.2px}
-    .status{
-      font-size:.72rem;padding:5px 9px;border-radius:999px;
-      border:1px solid rgba(34,197,94,.25);color:#86efac;background:rgba(34,197,94,.07)
-    }
-    .status.dev{color:#fde68a;border-color:rgba(234,179,8,.25);background:rgba(234,179,8,.06)}
-    .project h3{font-size:1.35rem;margin-bottom:9px}
-    .project p{color:var(--muted);font-size:.92rem}
-    .project-flow{
-      margin:21px 0;padding:16px;border-radius:14px;
-      background:#081522;border:1px solid rgba(255,255,255,.06);
-      color:#b9d0e3;font-size:.8rem;overflow:auto;white-space:nowrap
-    }
-    .tags{display:flex;gap:7px;flex-wrap:wrap;margin:17px 0}
-    .tag{padding:5px 8px;border-radius:8px;background:rgba(56,189,248,.07);color:#a9dcf6;border:1px solid rgba(56,189,248,.12);font-size:.73rem}
-    .project-links{display:flex;gap:10px;margin-top:18px}
-    .text-link{color:var(--primary);font-size:.84rem;font-weight:750;background:none;border:0;padding:0;cursor:pointer}
-    .text-link:hover{text-decoration:underline}
-
-    /* WORKFLOW SAMPLES */
-    .workflow-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    .workflow-card{
-      border:1px solid var(--line);border-radius:20px;padding:24px;
-      background:linear-gradient(145deg,rgba(15,29,49,.96),rgba(8,19,34,.96));
-      overflow:hidden
-    }
-    .workflow-card.featured{border-color:rgba(56,189,248,.34)}
-    .workflow-head{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;margin-bottom:17px}
-    .workflow-type{
-      font-size:.7rem;text-transform:uppercase;letter-spacing:1.1px;
-      color:var(--primary);font-weight:850
-    }
-    .workflow-card h3{font-size:1.2rem;margin:4px 0 7px}
-    .workflow-card p{font-size:.86rem;color:var(--muted)}
-    .workflow-visual{
-      margin-top:19px;padding:17px;border-radius:15px;background:#081522;
-      border:1px solid rgba(255,255,255,.06);display:grid;gap:8px
-    }
-    .wf-node{
-      display:flex;align-items:center;gap:10px;padding:10px 12px;
-      border:1px solid rgba(255,255,255,.08);border-radius:10px;
-      background:rgba(255,255,255,.025);font-size:.78rem
-    }
-    .wf-icon{
-      width:27px;height:27px;display:grid;place-items:center;border-radius:7px;
-      background:rgba(56,189,248,.09);border:1px solid rgba(56,189,248,.13);flex:none
-    }
-    .wf-node small{display:block;color:#7890a7;font-size:.68rem}
-    .wf-arrow{text-align:center;color:#4c6c86;font-size:.72rem}
-    .workflow-footer{margin-top:15px;display:flex;justify-content:space-between;gap:10px;align-items:center}
-    .workflow-tech{font-size:.72rem;color:#9eb8cc}
-    .workflow-link{font-size:.78rem;color:var(--primary);font-weight:750}
-    .workflow-link:hover{text-decoration:underline}
-
-    /* CASE STUDY MODAL */
-    .case-modal{
-      position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;
-      padding:24px;background:rgba(2,8,16,.82);backdrop-filter:blur(10px)
-    }
-    .case-modal.open{display:flex}
-    .case-dialog{
-      width:min(980px,100%);max-height:min(88vh,900px);overflow:auto;
-      background:#0b1728;border:1px solid #29435f;border-radius:24px;
-      box-shadow:0 30px 100px rgba(0,0,0,.55);position:relative
-    }
-    .case-close{
-      position:sticky;top:15px;float:right;margin:15px 15px 0 0;z-index:3;
-      width:38px;height:38px;border-radius:50%;border:1px solid #29435f;
-      background:#0b1728;color:#fff;font-size:1.25rem;cursor:pointer
-    }
-    .case-body{padding:38px}
-    .case-kicker{color:var(--primary);font-size:.73rem;font-weight:850;letter-spacing:1.5px;text-transform:uppercase}
-    .case-body h2{font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-1.3px;margin:7px 0 12px}
-    .case-lead{color:var(--muted);max-width:780px;font-size:1rem}
-    .case-section{margin-top:32px}
-    .case-section h3{font-size:1rem;margin-bottom:10px}
-    .case-section p,.case-section li{color:var(--muted);font-size:.9rem}
-    .case-section ul{padding-left:20px;display:grid;gap:5px}
-    .architecture{
-      margin-top:18px;padding:18px;border:1px solid rgba(56,189,248,.14);
-      background:#07121f;border-radius:17px;display:grid;gap:9px
-    }
-    .arch-row{display:grid;grid-template-columns:145px 1fr;gap:12px;align-items:center}
-    .arch-node{padding:11px 13px;border-radius:10px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.025);font-size:.8rem}
-    .arch-node strong{display:block}
-    .arch-node span{font-size:.69rem;color:#7890a7}
-    .arch-arrow{text-align:center;color:#4c6c86}
-    .case-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-    .case-mini{border:1px solid var(--line);border-radius:14px;padding:16px;background:rgba(255,255,255,.018)}
-    .case-mini strong{display:block;margin-bottom:5px;font-size:.82rem}
-    .case-mini span{color:var(--muted);font-size:.78rem}
-    .code-box{
-      margin-top:12px;background:#06101b;border:1px solid rgba(255,255,255,.07);
-      border-radius:12px;padding:14px;overflow:auto;color:#bfe6f8;font:12px/1.65 ui-monospace,SFMono-Regular,Menlo,monospace
-    }
-    .case-note{
-      margin-top:18px;padding:14px 16px;border-left:3px solid var(--primary);
-      background:rgba(56,189,248,.05);color:#b9d1e2;font-size:.82rem;border-radius:0 10px 10px 0
-    }
-    @media(max-width:680px){
-      .case-body{padding:25px 20px}
-      .case-grid{grid-template-columns:1fr}
-      .arch-row{grid-template-columns:1fr}
-    }
-
-    /* EXPERIENCE */
-    .timeline{display:grid;gap:14px}
-    .timeline-item{display:grid;grid-template-columns:155px 1fr;gap:25px;padding:24px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.018)}
-    .timeline-date{color:var(--primary);font-size:.82rem;font-weight:800}
-    .timeline h3{margin-bottom:4px}
-    .timeline p{color:var(--muted);font-size:.9rem}
-
-    /* STACK */
-    .stack{display:flex;flex-wrap:wrap;gap:9px}
-    .stack span{padding:9px 12px;border:1px solid var(--line);background:rgba(255,255,255,.02);border-radius:10px;color:#c9d7e5;font-size:.83rem}
-
-    /* CTA */
-    .cta{
-      text-align:center;padding:55px 25px;border:1px solid rgba(56,189,248,.2);
-      border-radius:25px;background:radial-gradient(circle at center,rgba(56,189,248,.09),rgba(255,255,255,.015) 55%)
-    }
-    .cta p{max-width:650px;margin:12px auto 24px;color:var(--muted)}
-
-    footer{padding:30px 0 45px;border-top:1px solid rgba(255,255,255,.06);color:var(--muted);font-size:.82rem}
-    .footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-
-    @media(max-width:900px){
-      .hero-grid,.about-grid{grid-template-columns:1fr}
-      .service-grid{grid-template-columns:repeat(2,1fr)}
-      .metric-grid{grid-template-columns:repeat(2,1fr)}
-      .metric:nth-child(2){border-right:0}
-      .metric:nth-child(-n+2){border-bottom:1px solid var(--line)}
-      .project-grid,.workflow-grid{grid-template-columns:1fr}
-    }
-    @media(max-width:680px){
-      .container{width:min(var(--max),calc(100% - 28px))}
-      .hero{padding-top:65px}
-      h1{letter-spacing:-2px}
-      .hero-name{font-size:clamp(3rem,15vw,4.7rem)}
-      .profile-card{min-height:320px}
-      .profile-photo{max-height:350px}
-      .nav-links{display:none;position:absolute;top:74px;left:0;right:0;padding:18px;background:#07111f;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}
-      .nav-links.open{display:flex}
-      .menu{display:block}
-      .nav-cta{border:0;padding:0}
-      .service-grid,.metric-grid{grid-template-columns:1fr}
-      .metric{border-right:0;border-bottom:1px solid var(--line)}
-      .metric:last-child{border-bottom:0}
-      .timeline-item{grid-template-columns:1fr;gap:5px}
-      section{padding:70px 0}
-      .focus-list{grid-template-columns:1fr}
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Mohamed Gebaly — n8n & AI Automation Specialist. Practical workflow automation, AI workflows, API integrations and engineering automation.">
+<meta name="author" content="Mohamed Gebaly">
+<meta name="theme-color" content="#07111f">
+<title>Mohamed Gebaly | n8n & AI Automation Specialist</title>
+<style>
+:root{--bg:#07111f;--bg2:#0b1728;--card:#0f1d31;--line:#1e3550;--text:#f4f8fc;--muted:#9db0c5;--primary:#38bdf8;--green:#22c55e;--max:1180px;--radius:20px;--shadow:0 18px 60px rgba(0,0,0,.25)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:82px}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(circle at 80% 0%,rgba(56,189,248,.10),transparent 32rem),radial-gradient(circle at 0% 35%,rgba(14,165,233,.06),transparent 28rem),var(--bg);color:var(--text);line-height:1.7}
+a{color:inherit;text-decoration:none}.container{width:min(var(--max),calc(100% - 40px));margin:auto}.muted{color:var(--muted)}
+nav{position:sticky;top:0;z-index:50;background:rgba(7,17,31,.86);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-inner{height:74px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:800}.brand span{color:var(--primary)}
+.nav-links{display:flex;gap:25px;align-items:center}.nav-links a{font-size:.92rem;color:var(--muted)}.nav-links a:hover{color:var(--text)}
+.nav-cta{padding:9px 15px;border:1px solid rgba(56,189,248,.35);border-radius:999px;color:var(--primary)!important}.menu{display:none;background:none;border:0;color:var(--text);font-size:1.5rem}
+.hero{padding:88px 0 68px}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:58px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 12px;border:1px solid rgba(56,189,248,.2);border-radius:999px;background:rgba(56,189,248,.06);color:#b9eaff;font-size:.82rem;font-weight:700;margin-bottom:22px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px rgba(34,197,94,.65)}
+h1{line-height:1;letter-spacing:-3px}.hero-name{display:block;font-size:clamp(3.6rem,7vw,6.3rem);font-weight:850;line-height:.95;letter-spacing:-.055em;background:linear-gradient(135deg,#f8fbff 10%,#b9eaff 75%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-title{display:block;margin-top:16px;font-size:clamp(1.65rem,3vw,2.65rem);font-weight:780;line-height:1.05;color:var(--primary);letter-spacing:-1.5px}.hero-subtitle{display:block;margin-top:10px;font-size:clamp(1.05rem,1.7vw,1.25rem);font-weight:650;color:#cbd9e8}
+.hero-copy{font-size:1.08rem;color:var(--muted);max-width:720px;margin:24px 0 30px;line-height:1.75}.actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border-radius:12px;font-weight:750;border:1px solid var(--line);transition:.2s}.btn-primary{background:var(--primary);color:#03121d;border-color:var(--primary)}.btn-primary:hover{background:#7dd3fc;transform:translateY(-1px)}.btn-secondary{background:rgba(255,255,255,.025)}
+.hero-side{display:grid;gap:18px}.profile-card{position:relative;min-height:360px;border:1px solid rgba(56,189,248,.2);border-radius:30px;overflow:hidden;background:radial-gradient(circle at 72% 18%,rgba(56,189,248,.15),rgba(10,24,41,.94) 52%);box-shadow:var(--shadow);display:flex;align-items:flex-end;justify-content:center}
+.profile-photo{position:relative;z-index:2;width:min(94%,560px);max-height:420px;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 22px 24px rgba(0,0,0,.35));transform:translateY(6px)}.profile-label{position:absolute;z-index:3;left:20px;bottom:18px;padding:9px 12px;border:1px solid rgba(255,255,255,.12);background:rgba(5,15,27,.72);backdrop-filter:blur(10px);border-radius:12px;font-size:.78rem;font-weight:700}
+.hero-panel{border:1px solid var(--line);background:linear-gradient(145deg,rgba(18,36,59,.92),rgba(10,24,41,.92));border-radius:22px;padding:20px;box-shadow:var(--shadow)}.panel-title{font-size:.8rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--primary);font-weight:800;margin-bottom:15px}.flow{display:grid;gap:8px}.flow-item{padding:11px 13px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.025);border-radius:12px}.flow-item strong{display:block;font-size:.9rem}.flow-item span{font-size:.76rem;color:var(--muted)}.arrow{text-align:center;color:#50708e;font-size:.75rem}
+.metrics{padding:15px 0 80px}.metric-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.018)}.metric{padding:23px;border-right:1px solid var(--line)}.metric:last-child{border-right:0}.metric b{font-size:1.8rem;display:block}.metric span{font-size:.84rem;color:var(--muted)}
+section{padding:88px 0}.section-kicker{font-size:.76rem;color:var(--primary);font-weight:850;text-transform:uppercase;letter-spacing:1.7px;margin-bottom:9px}.section-title{font-size:clamp(2rem,4vw,3.1rem);letter-spacing:-1.6px;line-height:1.1;margin-bottom:12px}.section-intro{color:var(--muted);max-width:760px;margin-bottom:38px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.card{background:linear-gradient(145deg,rgba(15,29,49,.95),rgba(10,23,40,.95));border:1px solid var(--line);border-radius:var(--radius);padding:28px}.card h3{margin-bottom:10px}.card p{color:var(--muted)}.focus-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}.focus{border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:12px;font-size:.9rem;background:rgba(255,255,255,.02)}
+.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.service{padding:23px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.018)}.service .icon{font-size:1.5rem;margin-bottom:13px}.service h3{font-size:1rem;margin-bottom:7px}.service p{font-size:.86rem;color:var(--muted)}
+.project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.project{border:1px solid var(--line);border-radius:22px;padding:26px;background:linear-gradient(145deg,rgba(15,29,49,.96),rgba(8,19,34,.96));position:relative;overflow:hidden}.project.featured{border-color:rgba(56,189,248,.34)}.project-top{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;margin-bottom:18px}.project-num{font-size:.75rem;color:var(--primary);font-weight:850;letter-spacing:1.2px}
+.status{font-size:.72rem;padding:5px 9px;border-radius:999px;border:1px solid rgba(34,197,94,.25);color:#86efac;background:rgba(34,197,94,.07)}.status.demo{color:#fde68a;border-color:rgba(234,179,8,.25);background:rgba(234,179,8,.06)}
+.project h3{font-size:1.35rem;margin-bottom:9px}.project p{color:var(--muted);font-size:.92rem}.project-flow{margin:21px 0;padding:16px;border-radius:14px;background:#081522;border:1px solid rgba(255,255,255,.06);color:#b9d0e3;font-size:.8rem;overflow:auto;white-space:nowrap}
+.tags{display:flex;gap:7px;flex-wrap:wrap;margin:17px 0}.tag{padding:5px 8px;border-radius:8px;background:rgba(56,189,248,.07);color:#a9dcf6;border:1px solid rgba(56,189,248,.12);font-size:.73rem}.project-links{display:flex;gap:10px;margin-top:18px}.text-link{color:var(--primary);font-size:.84rem;font-weight:750;background:none;border:0;padding:0;cursor:pointer}
+.workflow-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.workflow-card{border:1px solid var(--line);border-radius:20px;padding:24px;background:linear-gradient(145deg,rgba(15,29,49,.96),rgba(8,19,34,.96));overflow:hidden}.workflow-card.featured{border-color:rgba(56,189,248,.34)}.workflow-head{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;margin-bottom:17px}.workflow-type{font-size:.7rem;text-transform:uppercase;letter-spacing:1.1px;color:var(--primary);font-weight:850}.workflow-card h3{font-size:1.2rem;margin:4px 0 7px}.workflow-card p{font-size:.86rem;color:var(--muted)}
+.workflow-visual{margin-top:19px;padding:17px;border-radius:15px;background:#081522;border:1px solid rgba(255,255,255,.06);display:grid;gap:8px}.wf-node{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid rgba(255,255,255,.08);border-radius:10px;background:rgba(255,255,255,.025);font-size:.78rem}.wf-icon{width:27px;height:27px;display:grid;place-items:center;border-radius:7px;background:rgba(56,189,248,.09);border:1px solid rgba(56,189,248,.13);flex:none}.wf-node small{display:block;color:#7890a7;font-size:.68rem}.wf-arrow{text-align:center;color:#4c6c86;font-size:.72rem}.workflow-footer{margin-top:15px;display:flex;justify-content:space-between;gap:10px;align-items:center}.workflow-tech{font-size:.72rem;color:#9eb8cc}
+.timeline{display:grid;gap:14px}.timeline-item{display:grid;grid-template-columns:155px 1fr;gap:25px;padding:24px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.018)}.timeline-date{color:var(--primary);font-size:.82rem;font-weight:800}.timeline h3{margin-bottom:4px}.timeline p{color:var(--muted);font-size:.9rem}
+.stack{display:flex;flex-wrap:wrap;gap:9px}.stack span{padding:9px 12px;border:1px solid var(--line);background:rgba(255,255,255,.02);border-radius:10px;color:#c9d7e5;font-size:.83rem}
+.cta{text-align:center;padding:55px 25px;border:1px solid rgba(56,189,248,.2);border-radius:25px;background:radial-gradient(circle at center,rgba(56,189,248,.09),rgba(255,255,255,.015) 55%)}.cta p{max-width:650px;margin:12px auto 24px;color:var(--muted)}
+.case-modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(2,8,16,.82);backdrop-filter:blur(10px)}.case-modal.open{display:flex}.case-dialog{width:min(980px,100%);max-height:min(88vh,900px);overflow:auto;background:#0b1728;border:1px solid #29435f;border-radius:24px;box-shadow:0 30px 100px rgba(0,0,0,.55);position:relative}.case-close{position:sticky;top:15px;float:right;margin:15px 15px 0 0;z-index:3;width:38px;height:38px;border-radius:50%;border:1px solid #29435f;background:#0b1728;color:#fff;font-size:1.25rem;cursor:pointer}.case-body{padding:38px}.case-kicker{color:var(--primary);font-size:.73rem;font-weight:850;letter-spacing:1.5px;text-transform:uppercase}.case-body h2{font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-1.3px;margin:7px 0 12px}.case-lead{color:var(--muted);max-width:780px}.case-section{margin-top:32px}.case-section h3{font-size:1rem;margin-bottom:10px}.case-section p,.case-section li{color:var(--muted);font-size:.9rem}.case-section ul{padding-left:20px;display:grid;gap:5px}.architecture{margin-top:18px;padding:18px;border:1px solid rgba(56,189,248,.14);background:#07121f;border-radius:17px;display:grid;gap:9px}.arch-row{display:grid;grid-template-columns:145px 1fr;gap:12px;align-items:center}.arch-node{padding:11px 13px;border-radius:10px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.025);font-size:.8rem}.arch-node strong{display:block}.arch-node span{font-size:.69rem;color:#7890a7}.arch-arrow{text-align:center;color:#4c6c86}.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.case-mini{border:1px solid var(--line);border-radius:14px;padding:16px;background:rgba(255,255,255,.018)}.case-mini strong{display:block;margin-bottom:5px;font-size:.82rem}.case-mini span{color:var(--muted);font-size:.78rem}.case-note{margin-top:18px;padding:14px 16px;border-left:3px solid var(--primary);background:rgba(56,189,248,.05);color:#b9d1e2;font-size:.82rem;border-radius:0 10px 10px 0}
+footer{padding:30px 0 45px;border-top:1px solid rgba(255,255,255,.06);color:var(--muted);font-size:.82rem}.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media(max-width:900px){.hero-grid,.about-grid{grid-template-columns:1fr}.service-grid{grid-template-columns:repeat(2,1fr)}.metric-grid{grid-template-columns:repeat(2,1fr)}.metric:nth-child(2){border-right:0}.project-grid,.workflow-grid{grid-template-columns:1fr}}
+@media(max-width:680px){.container{width:min(var(--max),calc(100% - 28px))}.hero{padding-top:65px}.hero-name{font-size:clamp(3rem,15vw,4.7rem)}.nav-links{display:none;position:absolute;top:74px;left:0;right:0;padding:18px;background:#07111f;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}.nav-links.open{display:flex}.menu{display:block}.nav-cta{border:0;padding:0}.service-grid,.metric-grid{grid-template-columns:1fr}.metric{border-right:0;border-bottom:1px solid var(--line)}.timeline-item{grid-template-columns:1fr;gap:5px}.case-body{padding:25px 20px}.case-grid{grid-template-columns:1fr}.arch-row{grid-template-columns:1fr}section{padding:70px 0}.focus-list{grid-template-columns:1fr}}
+</style>
 </head>
-
 <body>
-  <nav>
-    <div class="container nav-inner">
-      <a class="brand" href="#home">Mohamed<span>Gebaly</span></a>
-      <button class="menu" aria-label="Open menu" onclick="toggleMenu()">☰</button>
-      <div class="nav-links" id="navLinks">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#projects">Projects</a>
-        <a href="#workflows">Workflows</a>
-        <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
-        <a class="nav-cta" href="#contact">Let's Talk</a>
-      </div>
-    </div>
-  </nav>
+<nav><div class="container nav-inner"><a class="brand" href="#home">Mohamed<span>Gebaly</span></a><button class="menu" aria-label="Open menu" onclick="toggleMenu()">☰</button><div class="nav-links" id="navLinks">
+<a href="#about">About</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#workflows">Workflows</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a class="nav-cta" href="#contact">Let's Talk</a>
+</div></div></nav>
 
-  <main id="home">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow"><span class="dot"></span> Available for freelance automation projects</div>
-          <h1>
-            <span class="hero-name">Mohamed Gebaly</span>
-            <span class="hero-title">n8n Automation Engineer</span>
-            <span class="hero-subtitle">Mechanical & HVAC Engineering Background</span>
-          </h1>
-          <p class="hero-copy">
-            I turn repetitive, manual and error-prone processes into practical
-            <strong>n8n workflow automations</strong> using APIs, data, business rules and AI where it adds real value.
-          </p>
-          <div class="actions">
-            <a class="btn btn-primary" href="#projects">Explore My Work →</a>
-            <a class="btn btn-secondary" href="#contact">Start a Conversation</a>
-          </div>
-        </div>
+<main id="home">
+<section class="hero"><div class="container hero-grid"><div>
+<div class="eyebrow"><span class="dot"></span> Available for freelance automation projects</div>
+<h1><span class="hero-name">Mohamed Gebaly</span><span class="hero-title">n8n & AI Automation Specialist</span><span class="hero-subtitle">Automating Business Processes with n8n, AI & Integrations</span></h1>
+<p class="hero-copy">I help businesses turn repetitive processes into practical, structured workflows using <strong>n8n, AI, APIs and data integrations</strong> — backed by real-world engineering and operations experience.</p>
+<div class="actions"><a class="btn btn-primary" href="#projects">View My Projects →</a><a class="btn btn-secondary" href="#contact">Let's Talk</a></div>
+</div>
+<div class="hero-side"><div class="profile-card"><img class="profile-photo" src="assets/mohamed-gebaly-profile.png" alt="Mohamed Gebaly, n8n and AI Automation Specialist"><div class="profile-label">Engineering → Automation</div></div>
+<div class="hero-panel"><div class="panel-title">My automation approach</div><div class="flow">
+<div class="flow-item"><strong>1. Understand the Process</strong><span>Find repetitive, manual or error-prone steps.</span></div><div class="arrow">↓</div>
+<div class="flow-item"><strong>2. Design the Workflow</strong><span>Triggers, rules, transformations and integrations.</span></div><div class="arrow">↓</div>
+<div class="flow-item"><strong>3. Add AI Where Useful</strong><span>Classification, extraction and structured decisions.</span></div><div class="arrow">↓</div>
+<div class="flow-item"><strong>4. Produce a Useful Outcome</strong><span>Records, notifications, approvals, reports or actions.</span></div>
+</div></div></div></div></section>
 
-        <div class="hero-side">
-          <div class="profile-card">
-            <img class="profile-photo" src="assets/mohamed-gebaly-profile.png" alt="Mohamed Gebaly, n8n Automation Engineer and Mechanical & HVAC Engineer" />
-            <div class="profile-label">Engineering → Automation</div>
-          </div>
-          <div class="hero-panel">
-            <div class="panel-title">How I approach automation</div>
-            <div class="flow">
-              <div class="flow-item"><strong>Business Process</strong><span>Understand what is repetitive, manual or error-prone.</span></div>
-              <div class="arrow">↓</div>
-              <div class="flow-item"><strong>n8n Workflow</strong><span>Triggers, conditions, transformations and integrations.</span></div>
-              <div class="arrow">↓</div>
-              <div class="flow-item"><strong>Data + APIs + AI</strong><span>Connect systems and structure information where useful.</span></div>
-              <div class="arrow">↓</div>
-              <div class="flow-item"><strong>Useful Outcome</strong><span>Notifications, records, approvals, reports or actions.</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<div class="metrics"><div class="container"><div class="metric-grid">
+<div class="metric"><b>177+</b><span>HVAC assets supported</span></div><div class="metric"><b>106</b><span>facilities & buildings</span></div><div class="metric"><b>100+</b><span>monthly SAP work orders</span></div><div class="metric"><b>7</b><span>contractors coordinated</span></div>
+</div></div></div>
 
-    <div class="metrics">
-      <div class="container">
-        <div class="metric-grid">
-          <div class="metric"><b>177+</b><span>HVAC assets supported</span></div>
-          <div class="metric"><b>106</b><span>facilities & buildings</span></div>
-          <div class="metric"><b>100+</b><span>monthly SAP work orders</span></div>
-          <div class="metric"><b>7</b><span>contractors coordinated</span></div>
-        </div>
-      </div>
-    </div>
+<section id="about"><div class="container"><div class="section-kicker">01 — About</div><h2 class="section-title">Engineering experience meets automation.</h2>
+<p class="section-intro">My value is combining workflow automation skills with experience in real operational processes.</p>
+<div class="about-grid">
+<div class="card"><h3>My background</h3><p>I'm a Mechanical Engineer with professional experience in HVAC maintenance, operations, procurement and MEP engineering. Working with work orders, equipment data, vendors, spare parts and approvals showed me how much operational work can be structured and automated.</p>
+<div class="focus-list"><div class="focus">🔧 Maintenance Operations</div><div class="focus">📦 Procurement Workflows</div><div class="focus">📊 Operational Data</div><div class="focus">🏭 Engineering Processes</div></div></div>
+<div class="card"><h3>My focus</h3><p>I build practical n8n workflows that connect systems, process information, apply business rules and use AI when it provides a clear advantage. My engineering background gives me a strong domain specialization for maintenance and technical operations.</p>
+<div class="focus-list"><div class="focus">⚙️ n8n Automation</div><div class="focus">🤖 AI Workflows</div><div class="focus">🔗 API & Data Integrations</div><div class="focus">❄️ HVAC Automation</div></div></div>
+</div></div></section>
 
-    <section id="about">
-      <div class="container">
-        <div class="section-kicker">01 — About</div>
-        <h2 class="section-title">Engineering experience meets automation.</h2>
-        <p class="section-intro">
-          My advantage is not just knowing an automation tool. I understand the operational
-          processes behind maintenance, procurement, equipment data and engineering workflows.
-        </p>
+<section id="services"><div class="container"><div class="section-kicker">02 — Services</div><h2 class="section-title">What I can automate.</h2><p class="section-intro">Focused services with searchable keywords and a clear engineering specialization.</p>
+<div class="service-grid">
+<div class="service"><div class="icon">⚙️</div><h3>n8n Workflow Automation</h3><p>Workflow design, triggers, conditions, approvals, notifications, data processing and business process automation.</p></div>
+<div class="service"><div class="icon">🤖</div><h3>AI Automation</h3><p>AI-powered classification, information extraction, structured outputs and AI-assisted business workflows.</p></div>
+<div class="service"><div class="icon">🔗</div><h3>API & Data Integrations</h3><p>REST APIs, Webhooks, Google Sheets, databases, JSON transformations and system-to-system integrations.</p></div>
+<div class="service"><div class="icon">❄️</div><h3>Engineering & HVAC Automation</h3><p>Maintenance, inventory, procurement, reporting and engineering operations automation using domain knowledge.</p></div>
+</div></div></section>
 
-        <div class="about-grid">
-          <div class="card">
-            <h3>From engineering to automation</h3>
-            <p>
-              My professional background is in HVAC maintenance, operations and MEP engineering.
-              That experience exposed me to work orders, troubleshooting, spare parts, vendors,
-              approvals, reports and repetitive operational tasks — the same processes that can often be structured and automated.
-            </p>
-            <div class="focus-list">
-              <div class="focus">🔧 Maintenance Operations</div>
-              <div class="focus">📦 Procurement Workflows</div>
-              <div class="focus">📊 Operational Data</div>
-              <div class="focus">🤖 AI-assisted Automation</div>
-            </div>
-          </div>
+<section id="projects"><div class="container"><div class="section-kicker">03 — Projects</div><h2 class="section-title">Selected automation work.</h2><p class="section-intro">One implemented learning project plus three clearly labeled portfolio demos. The demos are not presented as paid client or production deployments.</p>
+<div class="project-grid">
+<article class="project featured"><div class="project-top"><div class="project-num">PROJECT 01</div><span class="status">Implemented</span></div><h3>Maintenance Request Automation</h3><p>Automates maintenance-request routing by checking processing status, evaluating severity, updating the request and routing urgent versus normal cases.</p><div class="project-flow">New Request → Prepare Data → Check Status → Check Severity → Urgent / Normal Processing</div><div class="tags"><span class="tag">n8n</span><span class="tag">JavaScript</span><span class="tag">IF Logic</span><span class="tag">JSON</span><span class="tag">Maintenance</span></div><div class="project-links"><button class="text-link" onclick="openCaseStudy()">View Case Study →</button><a class="text-link" href="https://github.com/Mohamed-Gebaly/Mohamed-Gebaly.github.io/tree/main/workflows" target="_blank">Workflow Files →</a></div></article>
 
-          <div class="card">
-            <h3>What I build</h3>
-            <p>
-              Practical workflows that connect people, data and systems — from a form or webhook
-              to validation, business rules, database updates, notifications and downstream actions.
-            </p>
-            <div class="focus-list">
-              <div class="focus">Webhooks & Triggers</div>
-              <div class="focus">Conditional Logic</div>
-              <div class="focus">REST APIs</div>
-              <div class="focus">JSON & Data Transformation</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<article class="project"><div class="project-top"><div class="project-num">PROJECT 02</div><span class="status demo">Portfolio Demo</span></div><h3>AI Request Classification</h3><p>Demonstrates how a maintenance or business request can be structured, classified by priority and routed to different processing paths.</p><div class="project-flow">Request → Prepare Data → AI Classification Concept → Priority Check → Route</div><div class="tags"><span class="tag">n8n</span><span class="tag">AI Automation</span><span class="tag">JSON</span><span class="tag">Business Rules</span></div></article>
 
-    <section id="services">
-      <div class="container">
-        <div class="section-kicker">02 — Services</div>
-        <h2 class="section-title">Automation around business processes.</h2>
-        <p class="section-intro">The focus is on useful workflows, not automation for its own sake.</p>
+<article class="project"><div class="project-top"><div class="project-num">PROJECT 03</div><span class="status demo">Portfolio Demo</span></div><h3>API & Google Sheets Integration</h3><p>Demonstrates an integration pattern for preparing structured data, sending it through an API and preparing the result for a spreadsheet workflow.</p><div class="project-flow">Source Data → API Payload → HTTP Request → Reorder Check → Sheets Update</div><div class="tags"><span class="tag">n8n</span><span class="tag">REST API</span><span class="tag">Google Sheets</span><span class="tag">JSON</span></div></article>
 
-        <div class="service-grid">
-          <div class="service"><div class="icon">⚙️</div><h3>Workflow Automation</h3><p>Automate repetitive processes with triggers, conditions, transformations and scheduled jobs.</p></div>
-          <div class="service"><div class="icon">🔗</div><h3>API Integrations</h3><p>Connect forms, spreadsheets, databases and external services through APIs and webhooks.</p></div>
-          <div class="service"><div class="icon">🧠</div><h3>AI Workflows</h3><p>Use AI where classification, extraction or structured decision support adds practical value.</p></div>
-          <div class="service"><div class="icon">📊</div><h3>Data Workflows</h3><p>Clean, transform, route and store operational data for reporting and analysis.</p></div>
-        </div>
-      </div>
-    </section>
+<article class="project"><div class="project-top"><div class="project-num">PROJECT 04</div><span class="status demo">Portfolio Demo</span></div><h3>HVAC Maintenance Triage</h3><p>Engineering-focused demo that captures an HVAC issue, applies deterministic triage rules and separates corrective escalation from preventive-maintenance action.</p><div class="project-flow">HVAC Request → Engineering Triage → Priority Check → Corrective / PM Action</div><div class="tags"><span class="tag">n8n</span><span class="tag">HVAC</span><span class="tag">Maintenance</span><span class="tag">Engineering Rules</span></div></article>
+</div></div></section>
 
-    <section id="projects">
-      <div class="container">
-        <div class="section-kicker">03 — Featured Projects</div>
-        <h2 class="section-title">Proof through practical workflows.</h2>
-        <p class="section-intro">
-          I’m building the portfolio around real process automation. Each case study will show the problem,
-          workflow architecture, logic and technologies used.
-        </p>
+<section id="workflows"><div class="container"><div class="section-kicker">04 — Workflow Samples</div><h2 class="section-title">See how I structure an automation.</h2><p class="section-intro">The workflow visuals show the logic from input to useful business action.</p>
+<div class="workflow-grid">
+<article class="workflow-card featured"><div class="workflow-head"><div><div class="workflow-type">Implemented learning project</div><h3>Maintenance Request Routing</h3><p>Credential-free portfolio implementation of the routing logic.</p></div><span class="status">Implemented</span></div><div class="workflow-visual">
+<div class="wf-node"><span class="wf-icon">📥</span><div><strong>New Maintenance Request</strong><small>Demo input</small></div></div><div class="wf-arrow">↓</div>
+<div class="wf-node"><span class="wf-icon">⚙</span><div><strong>Prepare Request Data</strong><small>Normalize fields</small></div></div><div class="wf-arrow">↓</div>
+<div class="wf-node"><span class="wf-icon">✓</span><div><strong>Check Processing Status</strong><small>Process only unhandled requests</small></div></div><div class="wf-arrow">↓</div>
+<div class="wf-node"><span class="wf-icon">⚡</span><div><strong>Check Severity</strong><small>High → urgent path / normal → standard path</small></div></div><div class="wf-arrow">↓</div>
+<div class="wf-node"><span class="wf-icon">🔄</span><div><strong>Process Request</strong><small>Update status and prepare routing result</small></div></div>
+</div><div class="workflow-footer"><span class="workflow-tech">n8n · JavaScript · IF Logic · JSON</span><button class="text-link" onclick="openCaseStudy()">Case Study →</button></div></article>
 
-        <div class="project-grid">
-          <article class="project featured">
-            <div class="project-top">
-              <div class="project-num">PROJECT 01</div>
-              <span class="status">Built</span>
-            </div>
-            <h3>Maintenance Request Automation</h3>
-            <p>
-              A maintenance workflow that reads request data, checks status, evaluates severity,
-              updates the record and routes urgent vs. normal requests to the appropriate team.
-            </p>
-            <div class="project-flow">Request Data → Validate Status → Check Severity → Update Sheet → Email Team</div>
-            <div class="tags">
-              <span class="tag">n8n</span><span class="tag">Google Sheets</span><span class="tag">Gmail</span>
-              <span class="tag">IF Logic</span><span class="tag">JSON</span>
-            </div>
-            <div class="project-links">
-              <button class="text-link case-button" type="button" onclick="openCaseStudy('maintenance')">View Case Study →</button>
-              <a class="text-link" href="https://github.com/Mohamed-Gebaly" target="_blank" rel="noopener">GitHub →</a>
-            </div>
-          </article>
+<article class="workflow-card"><div class="workflow-head"><div><div class="workflow-type">Portfolio Demo</div><h3>AI Request Classification</h3><p>Structure a request, classify priority and route the result.</p></div><span class="status demo">Demo</span></div><div class="workflow-visual">
+<div class="wf-node"><span class="wf-icon">📝</span><div><strong>Request</strong><small>Unstructured description</small></div></div><div class="wf-arrow">↓</div><div class="wf-node"><span class="wf-icon">🧠</span><div><strong>AI Classification Concept</strong><small>Category, priority and summary</small></div></div><div class="wf-arrow">↓</div><div class="wf-node"><span class="wf-icon">{ }</span><div><strong>Structured Result</strong><small>Machine-readable JSON</small></div></div><div class="wf-arrow">↓</div><div class="wf-node"><span class="wf-icon">↗</span><div><strong>Route</strong><small>High-priority / standard path</small></div></div>
+</div><div class="workflow-footer"><span class="workflow-tech">n8n · AI concept · JSON · IF Logic</span></div></article>
 
-          <article class="project">
-            <div class="project-top">
-              <div class="project-num">PROJECT 02</div>
-              <span class="status dev">In Progress</span>
-            </div>
-            <h3>Inventory Reorder Automation</h3>
-            <p>
-              Workflow concept for checking current stock against minimum stock levels,
-              identifying items that need replenishment and preparing structured purchase actions.
-            </p>
-            <div class="project-flow">Inventory Data → Loop → Stock vs Minimum → Reorder Decision → Action</div>
-            <div class="tags">
-              <span class="tag">n8n</span><span class="tag">JavaScript</span><span class="tag">Inventory</span>
-              <span class="tag">Business Rules</span>
-            </div>
-          </article>
+<article class="workflow-card"><div class="workflow-head"><div><div class="workflow-type">Portfolio Demo</div><h3>API & Google Sheets Integration</h3><p>Connect structured data to an API-driven workflow.</p></div><span class="status demo">Demo</span></div><div class="workflow-visual">
+<div class="wf-node"><span class="wf-icon">📊</span><div><strong>Source Data</strong><small>Structured inventory records</small></div></div><div class="wf-arrow">↓</div><div class="wf-node"><span class="wf-icon">↔</span><div><strong>Prepare API Payload</strong><small>JSON transformation</small></div></div><div class="wf-arrow">↓</div><div class="wf-node"><span class="wf-icon">🌐</span><div><strong>HTTP Request</strong><small>REST API integration pattern</small></div></div><div class="wf-arrow">↓</div><div class="wf-node"><span class="wf-icon">📦</span><div><strong>Prepare Sheets Update</strong><small>Ready for spreadsheet workflow</small></div></div>
+</div><div class="workflow-footer"><span class="workflow-tech">n8n · REST API · JSON · Google Sheets</span></div></article>
 
-          <article class="project">
-            <div class="project-top">
-              <div class="project-num">PROJECT 03</div>
-              <span class="status dev">Planned</span>
-            </div>
-            <h3>Invoice Reconciliation</h3>
-            <p>
-              Automated reconciliation of purchase orders, invoices and receiving records,
-              with missing or inconsistent records flagged for review.
-            </p>
-            <div class="project-flow">PO Data + Invoice Data + Receiving → Match → Exceptions → Report</div>
-            <div class="tags">
-              <span class="tag">n8n</span><span class="tag">SQL</span><span class="tag">Data Validation</span>
-            </div>
-          </article>
+<article class="workflow-card"><div class="workflow-head"><div><div class="workflow-type">Portfolio Demo</div><h3>HVAC Maintenance Triage</h3><p>Apply engineering rules to maintenance requests.</p></div><span class="status demo">Demo</span></div><div class="workflow-visual">
+<div class="wf-node"><span class="wf-icon">❄️</span><div><strong>HVAC Request</strong><small>Equipment, issue, location</small></div></div><div class="wf-arrow">↓</div><div class="wf-node"><span class="wf-icon">🔧</span><div><strong>Engineering Triage</strong><small>System type, severity and action</small></div></div><div class="wf-arrow">↓</div><div class="wf-node"><span class="wf-icon">⚡</span><div><strong>Priority Check</strong><small>Escalation threshold</small></div></div><div class="wf-arrow">↓</div><div class="wf-node"><span class="wf-icon">📋</span><div><strong>Corrective / PM Action</strong><small>Route next engineering action</small></div></div>
+</div><div class="workflow-footer"><span class="workflow-tech">n8n · HVAC · Maintenance · Engineering Rules</span></div></article>
+</div></div></section>
 
-          <article class="project">
-            <div class="project-top">
-              <div class="project-num">PROJECT 04</div>
-              <span class="status dev">Planned</span>
-            </div>
-            <h3>AI Maintenance Assistant</h3>
-            <p>
-              An AI-assisted workflow for turning maintenance issue descriptions into structured
-              information and engineering-oriented troubleshooting support.
-            </p>
-            <div class="project-flow">Issue Description → AI Extraction → Structured JSON → Engineering Workflow</div>
-            <div class="tags">
-              <span class="tag">AI</span><span class="tag">n8n</span><span class="tag">JSON</span><span class="tag">HVAC</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+<section id="experience"><div class="container"><div class="section-kicker">05 — Experience</div><h2 class="section-title">The domain knowledge behind the automation.</h2><p class="section-intro">Automation is stronger when the process itself is understood.</p>
+<div class="timeline"><div class="timeline-item"><div class="timeline-date">2018 — Present</div><div><h3>Senior HVAC Maintenance Engineer — PETROBEL</h3><p>Maintenance and operations for HVAC assets across operational facilities, including SAP work orders, troubleshooting, procurement, contractor coordination and performance tracking.</p></div></div>
+<div class="timeline-item"><div class="timeline-date">2017 — Present</div><div><h3>Freelance Mechanical / MEP Design Engineer</h3><p>HVAC, plumbing and firefighting design, calculations, drawings and multidisciplinary engineering coordination.</p></div></div></div></div></section>
 
-    <section id="workflows">
-      <div class="container">
-        <div class="section-kicker">04 — Workflow Samples</div>
-        <h2 class="section-title">See how I structure an automation.</h2>
-        <p class="section-intro">
-          These examples show the architecture behind the automation — how data enters the workflow,
-          how business rules are applied, and how the workflow produces a useful action.
-        </p>
+<section id="skills"><div class="container"><div class="section-kicker">06 — Skills</div><h2 class="section-title">Technical stack.</h2><p class="section-intro">Core tools and domain capabilities relevant to my automation work.</p><div class="stack">
+<span>n8n</span><span>Workflow Automation</span><span>AI Workflows</span><span>REST APIs</span><span>Webhooks</span><span>JSON</span><span>JavaScript</span><span>Google Sheets</span><span>Gmail</span><span>Microsoft Excel</span><span>HVAC Engineering</span><span>Maintenance Operations</span><span>Procurement Workflows</span><span>SQL — Developing</span><span>Power BI — Developing</span><span>Python — Developing</span>
+</div></div></section>
 
-        <div class="workflow-grid">
-          <article class="workflow-card featured">
-            <div class="workflow-head">
-              <div>
-                <div class="workflow-type">Built in n8n</div>
-                <h3>Maintenance Request Routing</h3>
-                <p>Route maintenance requests according to status and severity.</p>
-              </div>
-              <span class="status">Live Example</span>
-            </div>
+<section id="contact"><div class="container"><div class="cta"><div class="section-kicker">07 — Contact</div><h2 class="section-title">Let's automate a real process.</h2><p>Have a repetitive process involving forms, spreadsheets, email, APIs or manual decisions? Let's break it down and identify what can be automated.</p><div class="actions" style="justify-content:center"><a class="btn btn-primary" href="mailto:MAshrafGebaly3@gmail.com">Email Me</a><a class="btn btn-secondary" href="https://github.com/Mohamed-Gebaly" target="_blank">GitHub</a><a class="btn btn-secondary" href="https://www.linkedin.com/in/eng-mohamed-gebaly/" target="_blank">LinkedIn</a></div></div></div></section>
+</main>
 
-            <div class="workflow-visual">
-              <div class="wf-node"><span class="wf-icon">📥</span><div><strong>Get Request Data</strong><small>Google Sheets</small></div></div>
-              <div class="wf-arrow">↓</div>
-              <div class="wf-node"><span class="wf-icon">✓</span><div><strong>Check Status</strong><small>IF — process only blank/open requests</small></div></div>
-              <div class="wf-arrow">↓</div>
-              <div class="wf-node"><span class="wf-icon">⚡</span><div><strong>Check Severity</strong><small>High → Urgent / Normal → PM</small></div></div>
-              <div class="wf-arrow">↓</div>
-              <div class="wf-node"><span class="wf-icon">🔄</span><div><strong>Update Record</strong><small>Google Sheets</small></div></div>
-              <div class="wf-arrow">↓</div>
-              <div class="wf-node"><span class="wf-icon">✉</span><div><strong>Send Notification</strong><small>Gmail → responsible team</small></div></div>
-            </div>
+<div class="case-modal" id="caseModal" aria-hidden="true"><div class="case-dialog" role="dialog" aria-modal="true" aria-labelledby="caseTitle"><button class="case-close" aria-label="Close" onclick="closeCaseStudy()">×</button><div class="case-body">
+<div class="case-kicker">Case Study · n8n Automation</div><h2 id="caseTitle">Maintenance Request Automation</h2>
+<p class="case-lead">A credential-free portfolio implementation that demonstrates how a maintenance request can be prepared, checked for processing status, classified by severity and routed to the appropriate path.</p>
+<div class="case-section"><h3>01 — Business Problem</h3><p>Maintenance requests can require repetitive review and routing. The workflow turns that decision process into explicit, repeatable automation logic.</p></div>
+<div class="case-section"><h3>02 — Workflow Architecture</h3><div class="architecture">
+<div class="arch-row"><div class="arch-node"><strong>New Maintenance Request</strong><span>Demo trigger / input</span></div><div class="arch-node"><strong>Prepare Request Data</strong><span>Normalize the request fields</span></div></div><div class="arch-arrow">↓</div>
+<div class="arch-row"><div class="arch-node"><strong>Check Processing Status</strong><span>Business rule</span></div><div class="arch-node"><strong>Unhandled request?</strong><span>Continue only when the request still needs processing</span></div></div><div class="arch-arrow">↓</div>
+<div class="arch-row"><div class="arch-node"><strong>Check Severity</strong><span>Conditional logic</span></div><div class="arch-node"><strong>High vs Normal</strong><span>Separate urgent and standard processing paths</span></div></div><div class="arch-arrow">↓</div>
+<div class="arch-row"><div class="arch-node"><strong>Process Request</strong><span>Workflow action</span></div><div class="arch-node"><strong>Update routing result</strong><span>Prepare the final status and notification decision</span></div></div>
+</div></div>
+<div class="case-section"><h3>03 — Core Logic</h3><div class="case-grid"><div class="case-mini"><strong>Status Check</strong><span>Prevent re-processing requests that already have a processing status.</span></div><div class="case-mini"><strong>Severity Check</strong><span>High severity follows the urgent route; other requests follow the normal route.</span></div><div class="case-mini"><strong>Data Preparation</strong><span>Normalize the request into predictable fields before applying rules.</span></div><div class="case-mini"><strong>Extensible Design</strong><span>The demo can later connect to real forms, Google Sheets, Gmail, databases or AI.</span></div></div></div>
+<div class="case-section"><h3>04 — Technologies</h3><div class="tags"><span class="tag">n8n</span><span class="tag">JavaScript</span><span class="tag">IF Logic</span><span class="tag">Expressions</span><span class="tag">JSON</span></div></div>
+<div class="case-section"><h3>05 — Portfolio Outcome</h3><ul><li>Demonstrates practical workflow structure rather than a static concept.</li><li>Makes business rules explicit and traceable.</li><li>Shows how engineering operations can be translated into automation logic.</li><li>Provides a foundation for a future production version with real credentials, logging, error handling and integrations.</li></ul></div>
+<div class="case-note"><strong>Important:</strong> This portfolio version is intentionally credential-free. It is not presented as a production deployment or paid client project. Real Google Sheets/Gmail/API connections can be added when implementing the production workflow.</div>
+<div class="actions" style="margin-top:24px"><a class="btn btn-primary" href="https://github.com/Mohamed-Gebaly/Mohamed-Gebaly.github.io/tree/main/workflows" target="_blank">View Workflow Files →</a><button class="btn btn-secondary" onclick="closeCaseStudy()">Close</button></div>
+</div></div></div>
 
-            <div class="workflow-footer">
-              <span class="workflow-tech">n8n · Google Sheets · Gmail · IF Logic</span>
-              <button class="workflow-link" type="button" onclick="openCaseStudy('maintenance')">View Case Study →</button>
-            </div>
-          </article>
-
-          <article class="workflow-card">
-            <div class="workflow-head">
-              <div>
-                <div class="workflow-type">Inventory Automation</div>
-                <h3>Stock Reorder Decision</h3>
-                <p>Identify items that have reached their reorder point.</p>
-              </div>
-              <span class="status dev">In Progress</span>
-            </div>
-
-            <div class="workflow-visual">
-              <div class="wf-node"><span class="wf-icon">📊</span><div><strong>Read Inventory</strong><small>Current stock + minimum stock</small></div></div>
-              <div class="wf-arrow">↓</div>
-              <div class="wf-node"><span class="wf-icon">🔁</span><div><strong>Loop Through Items</strong><small>JavaScript / item processing</small></div></div>
-              <div class="wf-arrow">↓</div>
-              <div class="wf-node"><span class="wf-icon">?</span><div><strong>Compare Stock</strong><small>Current Stock &lt; Minimum Stock?</small></div></div>
-              <div class="wf-arrow">↓</div>
-              <div class="wf-node"><span class="wf-icon">📦</span><div><strong>Create Reorder List</strong><small>Only items requiring action</small></div></div>
-            </div>
-
-            <div class="workflow-footer">
-              <span class="workflow-tech">n8n · JavaScript · Business Rules</span>
-              <span class="workflow-link">Case Study →</span>
-            </div>
-          </article>
-
-          <article class="workflow-card">
-            <div class="workflow-head">
-              <div>
-                <div class="workflow-type">AI Automation</div>
-                <h3>AI Request Structuring</h3>
-                <p>Turn an unstructured maintenance description into usable fields.</p>
-              </div>
-              <span class="status dev">Prototype</span>
-            </div>
-
-            <div class="workflow-visual">
-              <div class="wf-node"><span class="wf-icon">📝</span><div><strong>Raw Request</strong><small>Free-text user description</small></div></div>
-              <div class="wf-arrow">↓</div>
-              <div class="wf-node"><span class="wf-icon">🧠</span><div><strong>AI Extraction</strong><small>Equipment · Problem · Severity · Location</small></div></div>
-              <div class="wf-arrow">↓</div>
-              <div class="wf-node"><span class="wf-icon">{ }</span><div><strong>Structured JSON</strong><small>Validated machine-readable output</small></div></div>
-              <div class="wf-arrow">↓</div>
-              <div class="wf-node"><span class="wf-icon">⚙</span><div><strong>Business Workflow</strong><small>Route, store or notify</small></div></div>
-            </div>
-
-            <div class="workflow-footer">
-              <span class="workflow-tech">n8n · AI · JSON · Validation</span>
-              <span class="workflow-link">Case Study →</span>
-            </div>
-          </article>
-
-          <article class="workflow-card">
-            <div class="workflow-head">
-              <div>
-                <div class="workflow-type">Data Automation</div>
-                <h3>Invoice Reconciliation</h3>
-                <p>Compare purchasing records and surface exceptions for review.</p>
-              </div>
-              <span class="status dev">Planned</span>
-            </div>
-
-            <div class="workflow-visual">
-              <div class="wf-node"><span class="wf-icon">📄</span><div><strong>Collect Records</strong><small>PO + Invoice + Receiving data</small></div></div>
-              <div class="wf-arrow">↓</div>
-              <div class="wf-node"><span class="wf-icon">↔</span><div><strong>Match Records</strong><small>Supplier · PO · quantity · value</small></div></div>
-              <div class="wf-arrow">↓</div>
-              <div class="wf-node"><span class="wf-icon">⚠</span><div><strong>Detect Exceptions</strong><small>Missing or inconsistent records</small></div></div>
-              <div class="wf-arrow">↓</div>
-              <div class="wf-node"><span class="wf-icon">📬</span><div><strong>Review / Report</strong><small>Send exceptions to responsible users</small></div></div>
-            </div>
-
-            <div class="workflow-footer">
-              <span class="workflow-tech">n8n · SQL · Data Validation · Reporting</span>
-              <span class="workflow-link">Case Study →</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="experience">
-      <div class="container">
-        <div class="section-kicker">04 — Experience</div>
-        <h2 class="section-title">The domain knowledge behind the automation.</h2>
-        <p class="section-intro">Automation is stronger when the process itself is understood.</p>
-
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-date">2018 — Present</div>
-            <div><h3>Senior HVAC Maintenance Engineer — PETROBEL</h3><p>Maintenance and operations for HVAC assets across operational facilities, including SAP work orders, troubleshooting, procurement, contractor coordination and performance tracking.</p></div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-date">2017 — Present</div>
-            <div><h3>Freelance Mechanical / MEP Design Engineer</h3><p>HVAC, plumbing and firefighting design, calculations, drawings and multidisciplinary engineering coordination.</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="skills">
-      <div class="container">
-        <div class="section-kicker">05 — Skills</div>
-        <h2 class="section-title">Current technical stack.</h2>
-        <p class="section-intro">Core tools I use or am actively developing around automation and data.</p>
-        <div class="stack">
-          <span>n8n</span><span>Workflow Automation</span><span>REST APIs</span><span>Webhooks</span>
-          <span>JSON</span><span>JavaScript</span><span>Google Sheets</span><span>Gmail</span>
-          <span>Microsoft Excel</span><span>HVAC Engineering</span><span>Maintenance Operations</span>
-          <span>Procurement Workflows</span><span>SQL — Developing</span><span>Power BI — Developing</span>
-          <span>Python — Developing</span><span>AI Automation</span>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="cta">
-          <div class="section-kicker">06 — Contact</div>
-          <h2 class="section-title">Have a repetitive process?</h2>
-          <p>
-            Tell me what is currently being done manually. We can break the process down
-            and identify what can be automated with n8n, APIs, data workflows and AI.
-          </p>
-          <div class="actions" style="justify-content:center">
-            <a class="btn btn-primary" href="mailto:MAshrafGebaly3@gmail.com">Email Me</a>
-            <a class="btn btn-secondary" href="https://github.com/Mohamed-Gebaly" target="_blank" rel="noopener">GitHub</a>
-            <a class="btn btn-secondary" href="https://www.linkedin.com/in/eng-mohamed-gebaly/" target="_blank" rel="noopener">LinkedIn</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <div class="case-modal" id="caseModal" aria-hidden="true">
-    <div class="case-dialog" role="dialog" aria-modal="true" aria-labelledby="caseTitle">
-      <button class="case-close" type="button" aria-label="Close case study" onclick="closeCaseStudy()">×</button>
-      <div class="case-body">
-        <div class="case-kicker">Case Study · n8n Automation</div>
-        <h2 id="caseTitle">Maintenance Request Automation</h2>
-        <p class="case-lead">
-          A workflow designed to process maintenance requests, avoid re-processing completed records,
-          classify requests by severity, update the source record and notify the appropriate maintenance team.
-        </p>
-
-        <div class="case-section">
-          <h3>01 — Business Problem</h3>
-          <p>
-            Maintenance requests can become difficult to track when the same request must be checked,
-            categorized and routed manually. The workflow separates the decision logic from the communication step
-            so each request follows a predictable path.
-          </p>
-        </div>
-
-        <div class="case-section">
-          <h3>02 — Workflow Architecture</h3>
-          <div class="architecture">
-            <div class="arch-row">
-              <div class="arch-node"><strong>Manual Trigger</strong><span>Start workflow</span></div>
-              <div class="arch-node"><strong>Get Requests Data</strong><span>Read maintenance records from Google Sheets</span></div>
-            </div>
-            <div class="arch-arrow">↓</div>
-            <div class="arch-row">
-              <div class="arch-node"><strong>If Status is Blank</strong><span>IF node</span></div>
-              <div class="arch-node"><strong>Process only unhandled requests</strong><span>Prevents re-processing records with an existing status</span></div>
-            </div>
-            <div class="arch-arrow">↓</div>
-            <div class="arch-row">
-              <div class="arch-node"><strong>Check Severity</strong><span>IF node</span></div>
-              <div class="arch-node"><strong>Severity = High?</strong><span>High requests follow the urgent branch; others follow the normal branch</span></div>
-            </div>
-            <div class="arch-arrow">↓</div>
-            <div class="arch-row">
-              <div class="arch-node"><strong>Update Record</strong><span>Google Sheets</span></div>
-              <div class="arch-node"><strong>Status = Urgent / Normal</strong><span>Source data is updated before notification</span></div>
-            </div>
-            <div class="arch-arrow">↓</div>
-            <div class="arch-row">
-              <div class="arch-node"><strong>Send Email</strong><span>Gmail</span></div>
-              <div class="arch-node"><strong>Route to responsible team</strong><span>Urgent requests → CM team; normal requests → PM team</span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="case-section">
-          <h3>03 — Input Data</h3>
-          <div class="case-grid">
-            <div class="case-mini"><strong>Equipment</strong><span>Equipment or asset associated with the request.</span></div>
-            <div class="case-mini"><strong>Location</strong><span>Facility or location where the issue was reported.</span></div>
-            <div class="case-mini"><strong>Problem</strong><span>Description of the reported maintenance problem.</span></div>
-            <div class="case-mini"><strong>Severity</strong><span>Used by the routing rule to identify high-priority requests.</span></div>
-          </div>
-        </div>
-
-        <div class="case-section">
-          <h3>04 — Core Business Logic</h3>
-          <div class="code-box">IF Status is blank
-  └── continue processing
-
-IF Severity == "High"
-  ├── Update Status = "Urgent"
-  └── Send urgent notification
-
-ELSE
-  ├── Update Status = "Normal"
-  └── Send normal maintenance notification</div>
-        </div>
-
-        <div class="case-section">
-          <h3>05 — Technologies</h3>
-          <div class="tags">
-            <span class="tag">n8n</span><span class="tag">Google Sheets</span><span class="tag">Gmail</span>
-            <span class="tag">IF Nodes</span><span class="tag">Expressions</span><span class="tag">JSON</span>
-          </div>
-        </div>
-
-        <div class="case-section">
-          <h3>06 — Engineering Value</h3>
-          <ul>
-            <li>Turns a repetitive routing task into a repeatable workflow.</li>
-            <li>Separates business rules from notification actions.</li>
-            <li>Updates the source record so the request has an explicit processing status.</li>
-            <li>Creates a foundation that can later be extended with webhooks, SLA timers, escalation rules, databases or AI classification.</li>
-          </ul>
-        </div>
-
-        <div class="case-note">
-          This portfolio example intentionally uses a simplified maintenance process.
-          Production implementations should also include error handling, duplicate protection,
-          authentication/credential security, logging and escalation rules.
-        </div>
-
-        <div class="actions" style="margin-top:24px">
-          <a class="btn btn-primary" href="https://github.com/Mohamed-Gebaly" target="_blank" rel="noopener">View GitHub →</a>
-          <a class="btn btn-secondary" href="#contact" onclick="closeCaseStudy()">Discuss a Similar Workflow</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <div class="container footer-inner">
-      <span>© 2026 Mohamed Gebaly</span>
-      <span>HVAC Engineering × Automation × Data</span>
-    </div>
-  </footer>
-
-  <script>
-    function toggleMenu(){
-      document.getElementById('navLinks').classList.toggle('open');
-    }
-    document.querySelectorAll('#navLinks a').forEach(a=>{
-      a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open'));
-    });
-
-    function openCaseStudy(type){
-      if(type !== 'maintenance') return;
-      const modal = document.getElementById('caseModal');
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden','false');
-      document.body.style.overflow='hidden';
-    }
-
-    function closeCaseStudy(){
-      const modal = document.getElementById('caseModal');
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden','true');
-      document.body.style.overflow='';
-    }
-
-    document.getElementById('caseModal').addEventListener('click', function(e){
-      if(e.target === this) closeCaseStudy();
-    });
-
-    document.addEventListener('keydown', function(e){
-      if(e.key === 'Escape') closeCaseStudy();
-    });
-  </script>
-</body>
-</html>
+<footer><div class="container footer-inner"><span>© 2026 Mohamed Gebaly</span><span>n8n Automation × AI × Engineering</span></div></footer>
+<script>
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open')}
+document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+function openCaseStudy(){const m=document.getElementById('caseModal');m.classList.add('open');m.setAttribute('aria-hidden','false');document.body.style.overflow='hidden')}
+function closeCaseStudy(){const m=document.getElementById('caseModal');m.classList.remove('open');m.setAttribute('aria-hidden','true');document.body.style.overflow=''}
+document.getElementById('caseModal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeCaseStudy()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCaseStudy()});
+</script>
+</body></html>
