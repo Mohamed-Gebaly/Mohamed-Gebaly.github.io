@@ -1,0 +1,146 @@
+{
+  "name": "HVAC Maintenance Triage - Portfolio Demo",
+  "nodes": [
+    {
+      "id": "1",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "2",
+      "name": "Capture HVAC Request",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "parameters": {
+        "jsCode": "return [{json:{equipment:'AHU-11',systemType:'AHU',location:'LER-11',problem:'Supply air temperature is high and cooling is insufficient'}}];"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Engineering Triage",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const r=$json; const p=(r.problem||'').toLowerCase(); const priority=p.includes('h2s')||p.includes('shutdown')?'Critical':p.includes('not cooling')||p.includes('high')?'High':'Normal'; const action=priority==='Critical'||priority==='High'?'Corrective Maintenance Escalation':'Preventive / Routine Maintenance'; return [{json:{...r,priority,action,triageBasis:'Deterministic engineering rule demo'}}];"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Check Priority",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        720,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json.priority}}",
+              "operation": "equals",
+              "value2": "High"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "5",
+      "name": "Escalate Corrective",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        960,
+        -100
+      ],
+      "parameters": {
+        "jsCode": "return [{json:{...$json,route:'Corrective Maintenance Team'}}];"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Create PM Action",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        960,
+        100
+      ],
+      "parameters": {
+        "jsCode": "return [{json:{...$json,route:'Preventive Maintenance Queue'}}];"
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Capture HVAC Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Capture HVAC Request": {
+      "main": [
+        [
+          {
+            "node": "Engineering Triage",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Engineering Triage": {
+      "main": [
+        [
+          {
+            "node": "Check Priority",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Priority": {
+      "main": [
+        [
+          {
+            "node": "Escalate Corrective",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create PM Action",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
