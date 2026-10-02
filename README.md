@@ -1,14 +1,20 @@
-# 🤖 Mohamed Gebaly — Portfolio & Workflows
+# 🤖 Mohamed Gebaly
+## **n8n & AI Automation Specialist**
 
-A personal portfolio website showcasing n8n workflow automation, API integrations, and HVAC operations automation.
+### 🚀 Practical Workflow Automation | 🧠 AI Integration Patterns | ⚙️ Operations Automation
 
-## 📋 Overview
+Building automated solutions for maintenance operations, API integrations, and technical workflows. Combining mechanical engineering expertise with practical n8n automation and AI workflows.
 
-This repository contains:
+> **[👉 View My Portfolio](https://Mohamed-Gebaly.github.io)** — Interactive site with live workflow examples and technical case studies
 
-- **🌐 Portfolio website** — single-page site built with HTML, CSS, and JavaScript (no framework)
-- **⚙️ Workflow demos** — four n8n workflow implementations with full documentation
-- **📚 Case studies** — technical writeups explaining architecture, logic, and production paths
+---
+
+## 📋 What's Inside
+
+- 🌐 **Interactive Portfolio Website** — Single-page site showcasing skills, experience, projects, and automation examples
+- ⚙️ **4 Workflow Examples** — From implemented learning projects to portfolio demos, each with full documentation  
+- 📚 **Technical Case Studies** — Deep dives into architecture, logic flow, business rules, and production paths
+- 🔗 **Ready to Import** — All workflows are credential-free and can be imported directly into n8n
 
 ## 📁 Directory Structure
 
@@ -61,14 +67,21 @@ Each workflow includes a JSON export and a case-study document with architecture
 - **Workflows 02–04** are portfolio demos, not production or paid deployments
 - All workflows are credential-free for public sharing; production versions would add real integrations
 
-## 💻 Technology
+## 💻 Technology Stack
 
-- **Site:** HTML, CSS, JavaScript (vanilla, no dependencies)
-- **Workflows:** n8n (JSON format)
-- **Styling:** CSS Grid, Flexbox, CSS variables, animations
+**Frontend:** HTML, CSS, JavaScript (vanilla, no framework dependencies)  
+**Workflows:** n8n (JSON exports, credential-free)  
+**Design:** CSS Grid · Flexbox · CSS Variables · Keyframe Animations  
+**Hosting:** GitHub Pages
 
-## 🔗 Links
+---
 
-- **GitHub:** https://github.com/Mohamed-Gebaly
-- **LinkedIn:** https://www.linkedin.com/in/eng-mohamed-gebaly/
-- **Email:** MAshrafGebaly3@gmail.com
+## 🔗 Connect With Me
+
+📧 **Email:** [MAshrafGebaly3@gmail.com](mailto:MAshrafGebaly3@gmail.com)  
+🔗 **LinkedIn:** [eng-mohamed-gebaly](https://www.linkedin.com/in/eng-mohamed-gebaly/)  
+💻 **GitHub:** [Mohamed-Gebaly](https://github.com/Mohamed-Gebaly)  
+
+---
+
+**Made with ❤️ for automation and engineering excellence**
