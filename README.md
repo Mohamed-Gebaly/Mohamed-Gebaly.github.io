@@ -1,99 +1,76 @@
-# MohamedGebaly.github.io
+# 🤖 Mohamed Gebaly — Portfolio & Workflows
 
-Portfolio website and workflow showcase for Mohamed Gebaly, focused on:
+A personal portfolio website showcasing n8n workflow automation, API integrations, and HVAC operations automation.
 
-- n8n workflow automation
-- AI-assisted request processing
-- API and spreadsheet integration patterns
-- HVAC and maintenance operations automation
-
-## Repository Purpose
+## 📋 Overview
 
 This repository contains:
 
-- A live, single-page portfolio website in [index.html](index.html)
-- Workflow demo files and case studies in [workflows/](workflows/)
-- Clear separation between implemented learning work and portfolio demos
+- **🌐 Portfolio website** — single-page site built with HTML, CSS, and JavaScript (no framework)
+- **⚙️ Workflow demos** — four n8n workflow implementations with full documentation
+- **📚 Case studies** — technical writeups explaining architecture, logic, and production paths
 
-The portfolio is intentionally credential-free and safe to share publicly.
+## 📁 Directory Structure
 
-## Project Structure
-
-- [index.html](index.html): Main portfolio website
-- [assets/](assets/): Supporting static assets
-- [workflows/](workflows/): n8n workflow JSON files and case-study documentation
-- [workflows/README.md](workflows/README.md): Workflow documentation index and usage notes
-
-## Workflow Catalog
-
-| ID | Workflow | Type | Files |
-|---|---|---|---|
-| 01 | Maintenance Request Automation | Implemented learning project | [JSON](workflows/01_Maintenance_Request_Automation_Portfolio_Implementation.json) · [Case Study](workflows/01_Maintenance_Request_Automation_Case_Study.md) |
-| 02 | AI Request Classification | Portfolio demo | [JSON](workflows/02_AI_Request_Classification_Demo.json) · [Case Study](workflows/02_AI_Request_Classification_Case_Study.md) |
-| 03 | API and Google Sheets Integration | Portfolio demo | [JSON](workflows/03_API_GoogleSheets_Integration_Demo.json) · [Case Study](workflows/03_API_GoogleSheets_Integration_Case_Study.md) |
-| 04 | HVAC Engineering Automation | Portfolio demo | [JSON](workflows/04_HVAC_Engineering_Automation_Demo.json) · [Case Study](workflows/04_HVAC_Engineering_Automation_Case_Study.md) |
-
-## Local Preview
-
-No build step is required.
-
-1. Clone the repository.
-2. Open [index.html](index.html) in a browser.
-3. Optional: serve with a local static server for cleaner testing.
-
-Example with Python:
-
-```bash
-python -m http.server 8080
+```
+index.html                          # Main portfolio website
+assets/
+  styles.css                        # Page styling
+  script.js                         # Interactive features (menu, modals, observers)
+  mohamed-gebaly-profile.png        # Profile photo
+workflows/
+  README.md                         # Workflow documentation index
+  01_Maintenance_Request_Automation_Portfolio_Implementation.json
+  01_Maintenance_Request_Automation_Case_Study.md
+  02_AI_Request_Classification_Demo.json
+  02_AI_Request_Classification_Case_Study.md
+  03_API_GoogleSheets_Integration_Demo.json
+  03_API_GoogleSheets_Integration_Case_Study.md
+  04_HVAC_Engineering_Automation_Demo.json
+  04_HVAC_Engineering_Automation_Case_Study.md
 ```
 
-Then open http://localhost:8080.
+## 🔄 Workflows
 
-## Documentation Coverage
+| # | Name | Status | Purpose |
+|---|------|--------|---------|  
+| 01 | 🔧 Maintenance Request Automation | Implemented | Request normalization, status checking, severity-based routing |
+| 02 | 🧠 AI Request Classification | Demo | Unstructured-to-structured conversion and priority-based routing |
+| 03 | 🌐 API & Google Sheets Integration | Demo | REST API integration pattern with inventory decision logic |
+| 04 | ❄️ HVAC Engineering Automation | Demo | Engineering rule-based triage for HVAC maintenance requests |
 
-The repository now includes documentation for every workflow file:
+Each workflow includes a JSON export and a case-study document with architecture, node-by-node behavior, example input/output, and production enhancement notes.
 
-- Problem context
-- Workflow architecture
-- Node-by-node behavior
-- Example input and output
-- Current limitations
-- Production enhancement checklist
+## 🚀 Getting Started
 
-## What Should Be Enhanced Next
+**View the website:**
+1. Clone this repository
+2. Open `index.html` in a browser, or
+3. Serve locally: `python -m http.server 8080` and visit http://localhost:8080
 
-### Priority 1: Reliability and Correctness
+**📖 Browse workflows:**
+- See [workflows/README.md](workflows/README.md) for documentation and usage
+- Visit [workflows.html](workflows.html) for interactive workflow portfolio
 
-- Add schema validation for workflow inputs before routing logic.
-- Add explicit error branches for API/network failures.
-- Add retry, timeout, and fallback behavior in integration workflows.
+**Import workflows into n8n:**
+1. Go to [workflows/](workflows/) and select a JSON file
+2. Import into n8n
+3. Execute with the manual trigger to test
 
-### Priority 2: Production Readiness
+## 🎯 Positioning
 
-- Replace demo/manual triggers with webhook or form-driven triggers.
-- Move constants and thresholds into environment variables.
-- Add credential-managed nodes for real API, Gmail, and Google Sheets connections.
+- **Workflow 01** is an implemented learning project built and documented for portfolio demonstration
+- **Workflows 02–04** are portfolio demos, not production or paid deployments
+- All workflows are credential-free for public sharing; production versions would add real integrations
 
-### Priority 3: Observability and Operations
+## 💻 Technology
 
-- Add structured execution logs for each major decision point.
-- Define workflow-level KPIs (classification accuracy, routing latency, escalation rate).
-- Add audit-ready status updates for maintenance request lifecycle tracking.
+- **Site:** HTML, CSS, JavaScript (vanilla, no dependencies)
+- **Workflows:** n8n (JSON format)
+- **Styling:** CSS Grid, Flexbox, CSS variables, animations
 
-### Priority 4: Testing and Governance
+## 🔗 Links
 
-- Create test data sets for low, normal, high, and critical request scenarios.
-- Add regression test checklist for every workflow update.
-- Add versioning notes in each case-study file when workflow logic changes.
-
-## Portfolio Positioning Notes
-
-- Workflow 01 is an implemented learning project.
-- Workflows 02-04 are portfolio demos and are not represented as paid production deployments.
-- All examples are intentionally credential-free for public sharing.
-
-## Contact
-
-- GitHub: https://github.com/Mohamed-Gebaly
-- LinkedIn: https://www.linkedin.com/in/eng-mohamed-gebaly/
-- Email: MAshrafGebaly3@gmail.com
+- **GitHub:** https://github.com/Mohamed-Gebaly
+- **LinkedIn:** https://www.linkedin.com/in/eng-mohamed-gebaly/
+- **Email:** MAshrafGebaly3@gmail.com
