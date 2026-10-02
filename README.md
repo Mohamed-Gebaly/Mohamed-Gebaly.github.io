@@ -61,11 +61,18 @@ Each workflow includes a JSON export and a case-study document with architecture
 2. Import into n8n
 3. Test with the manual trigger
 
-## 🎯 Positioning
+## 🎯 Workflow Positioning
 
-- **Workflow 01** is an implemented learning project built and documented for portfolio demonstration
-- **Workflows 02–04** are portfolio demos, not production or paid deployments
-- All workflows are credential-free for public sharing; production versions would add real integrations
+**Workflow 01 — Implemented Project**
+- A fully functional automation solution deployed as a real-world implementation
+- Demonstrates practical n8n architecture for maintenance request routing and prioritization
+- Production-grade workflow with structured logic, error handling, and business rules
+
+**Workflows 02–04 — Professional Portfolio Demos**  
+- Free technical demonstrations showcasing automation capabilities across AI, APIs, and engineering domains
+- Each workflow illustrates industry-specific problem-solving and architectural patterns
+- Designed for portfolio reference and professional knowledge sharing—not production deployments
+- All credential-free and immediately importable into n8n for testing and learning
 
 ## 💻 Technology Stack
 

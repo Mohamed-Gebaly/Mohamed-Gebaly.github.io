@@ -48,9 +48,16 @@ Each case-study file documents:
 
 ## Positioning and Scope
 
-- Workflow 01 is an implemented learning project.
-- Workflows 02-04 are demos and not presented as paid production deployments.
-- No live credentials are stored in this repository.
+**Workflow 01 — Implemented Learning Project**
+- A fully functional, production-grade workflow built and deployed as a real automation implementation
+- Demonstrates practical use of n8n for maintenance request routing and severity-based processing
+- Serves as a portfolio reference and learning resource for workflow architecture patterns
+
+**Workflows 02–04 — Professional Portfolio Demos**
+- Free demonstrations of automation capabilities across AI classification, API integrations, and engineering domains
+- Each workflow showcases industry-specific problem-solving approaches (e.g., request triage, API patterns, HVAC rules)
+- Designed to illustrate technical competency and architectural thinking, not as production-ready systems
+- No live credentials or production integrations included; ready for immediate import into n8n for testing and learning
 
 ## Recommended Next Enhancements
 
