@@ -43,14 +43,12 @@ Each workflow includes a JSON export and a case-study document with architecture
 
 ## 🚀 Getting Started
 
-**View the website:**
-1. Clone this repository
-2. Open `index.html` in a browser, or
-3. Serve locally: `python -m http.server 8080` and visit http://localhost:8080
+**🌐 View the website:**
+- Visit https://Mohamed-Gebaly.github.io
 
 **📖 Browse workflows:**
 - See [workflows/README.md](workflows/README.md) for documentation and usage
-- Visit [workflows.html](workflows.html) for interactive workflow portfolio
+- Browse workflow portfolio in the "Workflows" section on the main site
 
 **Import workflows into n8n:**
 1. Go to [workflows/](workflows/) and select a JSON file
