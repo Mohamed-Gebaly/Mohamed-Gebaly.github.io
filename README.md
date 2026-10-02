@@ -43,17 +43,17 @@ Each workflow includes a JSON export and a case-study document with architecture
 
 ## 🚀 Getting Started
 
-**🌐 View the website:**
-- Visit https://Mohamed-Gebaly.github.io
+**View My Portfolio:**
+- Visit **[Mohamed-Gebaly.github.io](https://Mohamed-Gebaly.github.io)** to explore my automation work, experience, and workflow portfolio
 
-**📖 Browse workflows:**
-- See [workflows/README.md](workflows/README.md) for documentation and usage
-- Browse workflow portfolio in the "Workflows" section on the main site
+**Explore My Workflow Automation Portfolio:**
+- Browse detailed case studies and technical implementations in the "Workflows" section
+- See [workflows/README.md](workflows/README.md) for full documentation
 
-**Import workflows into n8n:**
-1. Go to [workflows/](workflows/) and select a JSON file
+**Import Workflows into n8n:**
+1. Go to [workflows/](workflows/) and download a JSON file
 2. Import into n8n
-3. Execute with the manual trigger to test
+3. Test with the manual trigger
 
 ## 🎯 Positioning
 
